@@ -91,6 +91,12 @@
     echo "<br>";
     echo $x++;
 
+    echo '<hr>';
+
+    // Logika
+    // &&, ||,!
+    $x = 10;
+    var_dump ($x < 20 && $x % 2 == 0);
 
 
 
