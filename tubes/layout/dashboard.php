@@ -1,7 +1,7 @@
 <?php 
 
 require 'functions.php';
-$produk = query("SELECT * FROM produk join kategori on kategori.id_kategori = produk.kategori_id");
+$produk = query("SELECT * FROM produk join kategori on kategori.id_kategori = produk.kategori_id ORDER BY id_produk DESC");
 
 // mengambil data barang
 $data_barang = mysqli_query($conn,"SELECT * FROM produk");

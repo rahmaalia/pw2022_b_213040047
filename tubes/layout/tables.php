@@ -1,7 +1,7 @@
 <?php 
 
 require 'functions.php';
-$produk = query("SELECT * FROM produk join kategori on kategori.id_kategori = produk.kategori_id");
+$produk = query("SELECT * FROM produk join kategori on kategori.id_kategori = produk.kategori_id ORDER BY id_produk DESC");
 
 ?>
 <!DOCTYPE html>
@@ -117,8 +117,11 @@ $produk = query("SELECT * FROM produk join kategori on kategori.id_kategori = pr
           <div class="row">
             <div class="col-md-12">
               <div class="card">
-                <div class="card-header">
-                  <h4 class="card-title">Serendipity</h4>
+                <div class="card-header m-3" >
+                  <div class="row justify-content-between ">
+                  <h4 class="card-title ">Serendipity</h4>
+                  <a href="tambah.php" class="btn btn-success  float-sm-end">+ tambah data</a>
+                  </div>
                 </div>
                 <div class="card-body">
                   <div class="table">
