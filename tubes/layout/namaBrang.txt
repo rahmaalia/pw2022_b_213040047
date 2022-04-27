@@ -1,0 +1,14 @@
+gendong1 = Exsport Abby Colorize Backpack - Cream
+gendong2 = Exsport D-Day Backpack - Grey
+gendong3 = Exsport Weekender Rucksack - Dark Green 
+gendong4 = Exsport Scholar Rucksack - Pink 
+gendong5 = Exsport Easy Going Mini Backpack - Dark Green
+
+sling1 = Exsport Mochila Poly Sling Bag - Purple 
+sling2 = Exsport Essential Sling Bag - Light Blue
+sling3 = Exsport Essential Sling Bag - Orange
+sling4 = Exsport Easy Going Sling Bag - Yellow
+
+totebag1 = Exsport Handheld Laptop Tote Bag - Salem 
+totebag2 = Exsport Flow And Go Tote Bag - Black
+totebag3 = Exsport Go-Getter Tote Bag - Brown

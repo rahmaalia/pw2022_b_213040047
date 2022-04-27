@@ -15,7 +15,10 @@ $jumlahStok = query("SELECT SUM(stok) FROM produk;");
 $kategori = mysqli_query($conn,"SELECT * FROM kategori");
 $jumlah_kategori = mysqli_num_rows($kategori);
 
-
+// jika tombol cari diklik
+if( isset($_POST ["cari"]) ) {
+  $produk = cari($_POST["keyword"]);
+} 
 
 ?>
 
@@ -26,7 +29,7 @@ $jumlah_kategori = mysqli_num_rows($kategori);
     <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png" />
     <link rel="icon" type="image/png" href="../assets/img/favicon.png" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>serendipity</title>
+    <title>admin serendipity</title>
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no" name="viewport" />
     <!--     Fonts and icons     -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
@@ -87,12 +90,13 @@ $jumlah_kategori = mysqli_num_rows($kategori);
               <span class="navbar-toggler-bar navbar-kebab"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navigation">
-              <form>
+            <form action="" method="post">
                 <div class="input-group no-border">
-                  <input type="text" value="" class="form-control" placeholder="Search..." />
+                  <input type="text" name="keyword" value="" class="form-control" placeholder="Cari..." autocomplete="off" />
                   <div class="input-group-append">
                     <div class="input-group-text">
                       <i class="nc-icon nc-zoom-split"></i>
+                      <button type="submit" name="cari">Cari</button>
                     </div>
                   </div>
                 </div>
@@ -218,6 +222,7 @@ $jumlah_kategori = mysqli_num_rows($kategori);
                         <th>Stok</th>
                         <th>Harga</th>
                         <th>Kategori</th>
+                        <th>Keterangan</th>
                       </thead>
                       <tbody>
                         <?php $i = 1; ?>
@@ -225,10 +230,15 @@ $jumlah_kategori = mysqli_num_rows($kategori);
                         <tr>
                         <td><?= $i; ?></td>
                         <td><img src="../gambar/<?= $pro["gambar"]; ?>" width="100" alt=""></td>
-                        <td><?= $pro["nama_produk"]; ?></td>
-                        <td><?= $pro["stok"]; ?></td>
+                        <td class="font-weight-bold" ><?= $pro["nama_produk"]; ?></td>
+                        <?php if($pro["stok"] > 0): ?>
+                          <td class="font-weight-bold text-secondary" ><?= $pro["stok"]; ?></td>
+                        <?php elseif($pro["stok"] < 1): ?>
+                          <td class="col-1 text-danger font-weight-bold">STOK HABIS</td>
+                        <?php endif; ?>
                         <td>Rp.<?= $pro["harga"]; ?></td>
-                        <td><?= $pro["nama_kategori"]; ?></td>
+                        <td class="font-weight-bold text-secondary"><?= $pro["nama_kategori"]; ?></td>
+                        <td><?= $pro["keterangan"]; ?></td>
                         </tr>
                         <?php $i++; ?>
                         <?php endforeach; ?>

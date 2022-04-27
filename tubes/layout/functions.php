@@ -22,6 +22,7 @@ function tambah($data){
     $stok = htmlspecialchars($data["stok"]);
     $harga = htmlspecialchars($data["harga"]);
     $kategori = htmlspecialchars($data["kategori"]);
+    $keterangan = htmlspecialchars($data["keterangan"]);
 
     // upload gambar
     $gambar = upload();
@@ -32,7 +33,7 @@ function tambah($data){
     // query insert data
     $query = "INSERT INTO produk
                 VALUES
-                ('', '$namaProduk', '$stok', '$harga', '$gambar', '$kategori')
+                ('', '$namaProduk', '$stok', '$harga', '$gambar', '$kategori', '$keterangan')
                 ";
     mysqli_query($conn, $query);
 
@@ -104,6 +105,7 @@ function ubah($data){
     $harga = htmlspecialchars($data["harga"]);
     $gambarLama = htmlspecialchars($data["gambarLama"]);
     $kategori = htmlspecialchars($data["kategori_id"]);
+    $keterangan = htmlspecialchars($data["keterangan"]);
 
     // cek apakah user pilih gambar baru atau tidak
     if($_FILES['gambar']['error'] === 4){
@@ -118,7 +120,8 @@ function ubah($data){
                 stok = '$stok',
                 harga = '$harga',
                 gambar = '$gambar',
-                kategori_id = '$kategori'  
+                kategori_id = '$kategori',
+                keterangan = '$keterangan'  
                 WHERE id_produk = $id;";
 
     mysqli_query($conn, $query) or die(mysqli_error($conn));
@@ -134,7 +137,8 @@ function cari($keyword) {
                 nama_produk LIKE '%$keyword%' OR
                 stok LIKE '%$keyword%' OR
                 harga LIKE '%$keyword%' OR
-                kategori_id LIKE '%$keyword%'
+                kategori_id LIKE '%$keyword%' OR
+                keterangan LIKE '%$keyword%'
             ";
     return query($query);
 }

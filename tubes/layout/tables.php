@@ -15,18 +15,19 @@ if( isset($_POST ["cari"]) ) {
     <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png" />
     <link rel="icon" type="image/png" href="../assets/img/favicon.png" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>serendipity</title>
+    <title>admin serendipity</title>
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no" name="viewport" />
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet" />
     <script src="https://kit.fontawesome.com/cf066d9bb1.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"> -->
 
     <!-- CSS Files -->
     <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
     <link href="../assets/css/paper-dashboard.css?v=2.0.1" rel="stylesheet" />
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="../assets/css/style.css" />
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="../assets/demo/demo.css" rel="stylesheet" />
   </head>
@@ -42,7 +43,7 @@ if( isset($_POST ["cari"]) ) {
             <!-- <p>CT</p> -->
           </a>
           <a href="https://www.creative-tim.com" class="simple-text logo-normal">
-            SERENDIPITY
+             SERENDIPITY
             <!-- <div class="logo-image-big">
             <img src="../assets/img/logo-big.png">
           </div> -->
@@ -130,32 +131,39 @@ if( isset($_POST ["cari"]) ) {
                   </div>
                 </div>
                 <div class="card-body">
-                  <div class="table">
+                  <div class="table-responsive">
                     <!-- TABEL -->
                     <table class="table">
                       <thead class="text-primary">
                         <th>No</th>
+                        <th class="text-right">Aksi</th>
                         <th>Gambar</th>
                         <th>Nama</th>
                         <th>Stok</th>
                         <th>Harga</th>
                         <th>Kategori</th>
-                        <th class="text-right">Aksi</th>
+                        <th>Keterangan</th>
                       </thead>
                       <tbody>
                         <?php $i = 1; ?>
                         <?php foreach($produk as $pro): ?>
                         <tr>
                         <td><?= $i; ?></td>
-                        <td><img src="../gambar/<?= $pro["gambar"]; ?>" width="100" alt=""></td>
-                        <td><?= $pro["nama_produk"]; ?></td>
-                        <td><?= $pro["stok"]; ?></td>
-                        <td>Rp.<?= $pro["harga"]; ?></td>
-                        <td><?= $pro["nama_kategori"]; ?></td>
                         <td class="text-right">
-                            <a href="ubah.php?id_produk=<?= $pro["id_produk"]; ?>"><i class="far fa-edit fa-2x text-warning"></i></a> |
-                            <a href="hapus.php?id_produk=<?= $pro["id_produk"]; ?>"onclick="return confirm('Yakin?')"><i class="far fa-trash-alt fa-2x text-danger"></i></a>
+                            <a href="ubah.php?id_produk=<?= $pro["id_produk"]; ?>"><i class="far fa-edit fa-1x text-warning"></i></a>
+                            <a href="hapus.php?id_produk=<?= $pro["id_produk"]; ?>"onclick="return confirm('Yakin?')"><i class="far fa-trash-alt fa-1x text-danger"></i></a>
                         </td>
+                        <td><img src="../gambar/<?= $pro["gambar"]; ?>" width="100" alt=""></td>
+                        <td class="font-weight-bold" ><?= $pro["nama_produk"]; ?></td>
+                        <?php if($pro["stok"] > 0): ?>
+                          <td class="font-weight-bold text-secondary"><?= $pro["stok"]; ?></td>
+                        <?php elseif($pro["stok"] < 1): ?>
+                          <td class="col-1 text-danger font-weight-bold">STOK HABIS</td>
+                        <?php endif; ?>
+                        <td>Rp.<?= $pro["harga"]; ?></td>
+                        <td class="font-weight-bold text-secondary"><?= $pro["nama_kategori"]; ?></td>
+                        <td><?= $pro["keterangan"]; ?></td>
+                        
                         </tr>
                         <?php $i++; ?>
                         <?php endforeach; ?>

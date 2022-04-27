@@ -69,8 +69,13 @@ if (isset($_POST["submit"])) {
                                 <option value="3">Slingbag</option>
                             </select>
                         </div>
+                        <div class="mb-3">
+                            <label for="keterangan" class="form-label">Keterangan</label>
+                            <textarea class="form-control" id="keterangan" name="keterangan" placeholder="masukkan keterangan barang" rows="3" required ></textarea>
+                        </div>
                         
                         <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+                        <a href="tables.php" class="mx-1 btn text-secondary">Kembali</a>
                     </form>
                 </div>
             </div>
