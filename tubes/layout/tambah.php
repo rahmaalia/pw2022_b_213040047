@@ -5,6 +5,7 @@ require 'functions.php';
 // cek apakah tombol submit telah ditekan atau belum
 if (isset($_POST["submit"])) {
 
+
     // cek apakag data berhasil di tambahkan atau tidak
     if (tambah($_POST) > 0) {
         echo "
@@ -41,7 +42,7 @@ if (isset($_POST["submit"])) {
                     <h4 class="card-title text-center">Tambah Data Barang</h4>
                 </div>
                 <div class="card-body">
-                    <form action="" method="post">
+                    <form action="" method="post" enctype="multipart/form-data">
                         <div class="mb-3">
                             <label for="namaProduk" class="form-label">Nama Produk</label>
                             <input type="text" class="form-control" id="namaProduk" name="namaProduk" placeholder="masukkan nama produk" required autofocus>
@@ -56,7 +57,8 @@ if (isset($_POST["submit"])) {
                         </div>
                         <div class="mb-3">
                             <label for="gambar" class="form-label">Gambar</label>
-                            <input type="text" class="form-control" id="gambar" name="gambar" placeholder="masukkan nama gambar" required >
+                            <input type="file" class="form-control picture" id="gambar" name="gambar" placeholder="masukkan nama gambar" onchange="previewImage()">
+                            <img src="../gambar/blank.png" width="150" class="mt-3 d-block img-preview">
                         </div>
                         <div class="mb-3">
                             <label for="kategori" class="col-form-label">Kategori</label>
@@ -76,13 +78,10 @@ if (isset($_POST["submit"])) {
     </div>
 
     
-
-
-
-
-    
-
     <!--   Core JS Files   -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="../assets/js/script.js"></script>
+    <script src="../assets/js/jquery-3.5.1.js"></script>
+
 </body>
 </html>

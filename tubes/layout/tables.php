@@ -3,6 +3,10 @@
 require 'functions.php';
 $produk = query("SELECT * FROM produk join kategori on kategori.id_kategori = produk.kategori_id ORDER BY id_produk DESC");
 
+// jika tombol cari diklik
+if( isset($_POST ["cari"]) ) {
+  $produk = cari($_POST["keyword"]);
+} 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -81,12 +85,14 @@ $produk = query("SELECT * FROM produk join kategori on kategori.id_kategori = pr
               <span class="navbar-toggler-bar navbar-kebab"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navigation">
-              <form>
+              <!-- SEACRH -->
+              <form action="" method="post">
                 <div class="input-group no-border">
-                  <input type="text" value="" class="form-control" placeholder="Search..." />
+                  <input type="text" name="keyword" value="" class="form-control" placeholder="Cari..." autocomplete="off" />
                   <div class="input-group-append">
                     <div class="input-group-text">
                       <i class="nc-icon nc-zoom-split"></i>
+                      <button type="submit" name="cari">Cari</button>
                     </div>
                   </div>
                 </div>
