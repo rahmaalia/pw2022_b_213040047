@@ -102,8 +102,15 @@ function ubah($data){
     $namaProduk = htmlspecialchars($data["namaProduk"]);
     $stok = htmlspecialchars($data["stok"]);
     $harga = htmlspecialchars($data["harga"]);
-    $gambar = htmlspecialchars($data["gambar"]);
+    $gambarLama = htmlspecialchars($data["gambarLama"]);
     $kategori = htmlspecialchars($data["kategori_id"]);
+
+    // cek apakah user pilih gambar baru atau tidak
+    if($_FILES['gambar']['error'] === 4){
+        $gambar = $gambarLama;
+    } else{
+        $gambar = upload();
+    }
 
     // query insert data
     $query = "UPDATE produk SET 

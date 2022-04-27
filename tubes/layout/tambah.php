@@ -58,7 +58,7 @@ if (isset($_POST["submit"])) {
                         <div class="mb-3">
                             <label for="gambar" class="form-label">Gambar</label>
                             <input type="file" class="form-control picture" id="gambar" name="gambar" placeholder="masukkan nama gambar" onchange="previewImage()">
-                            <img src="../gambar/blank.png" width="150" class="mt-3 d-block img-preview">
+                            <img src="../gambar/blank2.png" width="150" class="mt-3 d-block img-preview">
                         </div>
                         <div class="mb-3">
                             <label for="kategori" class="col-form-label">Kategori</label>

@@ -48,8 +48,10 @@ if (isset($_POST["submit"])) {
                     <h4 class="card-title text-center">Ubah Data Barang</h4>
                 </div>
                 <div class="card-body">
-                    <form action="" method="post">
+                    <form action="" method="post" enctype="multipart/form-data">
                     <input type="hidden" name="id_produk" value="<?= $pro["id_produk"]; ?>">
+                    <input type="hidden" name="gambarLama" value="<?= $pro["gambar"]; ?>">
+
                     
                         <div class="mb-3">
                             <label for="namaProduk" class="form-label">Nama Produk</label>
@@ -65,7 +67,8 @@ if (isset($_POST["submit"])) {
                         </div>
                         <div class="mb-3">
                             <label for="gambar" class="form-label">Gambar</label>
-                            <input type="text" class="form-control" id="gambar" name="gambar" value="<?= $pro["gambar"]; ?>" required >
+                            <input type="file" class="form-control picture" id="gambar" name="gambar" onchange="previewImage()" >
+                            <img src="../gambar/<?= $pro["gambar"]; ?>" alt="" width="150" class="mt-3 d-block img-preview">
                         </div>
                         <div class="mb-3">
                             <label for="kategori" class="col-form-label">Kategori</label>
@@ -93,5 +96,7 @@ if (isset($_POST["submit"])) {
 
     <!--   Core JS Files   -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="../assets/js/script.js"></script>
+    <script src="../assets/js/jquery-3.5.1.js"></script>
 </body>
 </html>
