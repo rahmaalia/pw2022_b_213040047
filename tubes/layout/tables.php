@@ -147,8 +147,8 @@ $produk = query("SELECT * FROM produk join kategori on kategori.id_kategori = pr
                         <td>Rp.<?= $pro["harga"]; ?></td>
                         <td><?= $pro["nama_kategori"]; ?></td>
                         <td class="text-right">
-                            <a href=""><i class="far fa-edit fa-2x text-warning"></i></a> |
-                            <a href=""><i class="far fa-trash-alt fa-2x text-danger"></i></a>
+                            <a href="ubah.php?id_produk=<?= $pro["id_produk"]; ?>"><i class="far fa-edit fa-2x text-warning"></i></a> |
+                            <a href="hapus.php?id_produk=<?= $pro["id_produk"]; ?>"onclick="return confirm('Yakin?')"><i class="far fa-trash-alt fa-2x text-danger"></i></a>
                         </td>
                         </tr>
                         <?php $i++; ?>
