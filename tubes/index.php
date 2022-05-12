@@ -95,51 +95,88 @@ $produk = query("SELECT * FROM produk join kategori on kategori.id_kategori = pr
       </div>
     </div>
 
+    <!-- PRODUK FAFORITE -->
     <section id="data" class="container text-center my-3 ">
-    <div class="row mt-5 justify-content-evenly">
-      <h3 class="produk-text mb-4 fw-bold ">produk favorit</h3>
-      <?php foreach ($produk as $pro) : ?>
-        <div class="col-sm-5 col-md-3 zoom">
-          <a href="php/detail.php?id=<?= $pro['id_produk'] ?>"">
-          <div class="card text-center mb-3">
-            <img src="gambar/<?= $pro["gambar"]; ?>" class="card-img-top" width="200px">
-            <div class="card-body">
-              <a class="btn btn-4 col-12 text-uppercase fw-bold" href="php/detail.php?id=<?= $pro['id_produk'] ?>">
-                <?= $pro["nama_produk"]; ?>
-              </a>
+      <div class="row mt-5 justify-content-evenly">
+        <h3 class="produk-text mb-4 fw-bold ">produk favorit</h3>
+        <?php foreach ($produk as $pro) : ?>
+          <div class="col-sm-5 col-md-3 zoom">
+            <a href="php/detail.php?id=<?= $pro['id_produk'] ?>"">
+            <div class="card text-center mb-3">
+              <img src="gambar/<?= $pro["gambar"]; ?>" class="card-img-top" width="200px">
+              <div class="card-body">
+                <a class="btn btn-4 col-12 text-uppercase fw-bold" href="php/detail.php?id=<?= $pro['id_produk'] ?>">
+                  <?= $pro["nama_produk"]; ?>
+                </a>
+              </div>
             </div>
+            </a>
           </div>
-          </a>
-        </div>
-      <?php endforeach; ?>
-    </div>
-    <a href="shoe.php" class="btn btn-login btn-3 mb-3 mt-3 fs-6 text-white rounded-pill">lihat produk lainnya</a>
+        <?php endforeach; ?>
+      </div>
+      <a href="shoe.php" class="btn btn-login btn-3 mb-3 mt-4 fs-6 text-white rounded-pill">lihat produk lainnya</a>
     </section>
 
-    <section id="kategori" class="container text-center my-3 " >
-      <div class="row mt-5 justify-content-evenly">
-        <h3 class="produk-text mb-4 fw-bold ">kategori</h3>
-      </div>
-      <div class="container-fluid">
-          <div class="row">
-              <div class="col-xs-12 col-md-6 pull-right">
-                  <div class="well d-flex justify-content-evenly tall" >
-                      <img src="gambar/gendong3.jpg" alt="" style="width:320px;">
-                  </div>
-              </div>
-              <div class="col-xs-12 col-md-6">
-                  <div class="well tall">
-                    <img src="gambar/sling2.jpg" alt="" style="width:320px;">
-                  </div>
-              </div>
-              <div class="col-xs-12 col-md-12 pull-right mt-4">
-                  <div class="well tote">
-                    <img src="gambar/totebag2.jpg" alt="" style="width:310px;">
-                  </div>
-              </div>
-          </div>
+    <!-- KATEGORI -->
+    <section id="kategori" class="kategori text-center  "  >
+      <div class="container">
+        <div class="row mt-5 justify-content-evenly">
+          <h3 class="produk-text mb-4 fw-bold mt-4 ">kategori</h3>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class=" col-xs-12 col-md-6 pull-right">
+                    <div class="well gendong tall" >
+                        <img src="gambar/gendong-remove.png" alt="" style="width:300px; ">
+                    </div>      
+                </div>
+                <div class="col-xs-12 col-md-6">
+                    <div class="well sling tall">
+                      <img src="gambar/sling-remove.png" alt="" style="width:320px;">
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-12 pull-right mt-4 mb-4" >
+                    <div class="well tote">
+                      <img src="gambar/totebag-remove.png" alt="" style="width:320px;">
+                    </div>
+                </div>
+            </div>
+        </div>
       </div>
     </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+          <div class="container pt-5">
+            <div class="content">
+              <div class="columns is-multiline">
+                <div class="row">
+                  <div class="column col-md-4">
+                    <img src="gambar/bg-seren.png" alt="" width="175">
+                    <p class="mt-3"><strong> Bring your life</strong> </p>
+                    <p style="margin-bottom:3px ;"><i class="fa-solid fa-location-dot"></i>   Cimahi, Jawa Barat, Indonesia </p>
+                    <p style="margin-bottom:3px ;"><i class="fa-solid fa-phone"></i> 0211233456</p>
+                    <p><i class="fa-solid fa-envelope"></i> serendipity@gmail.com</p>
+                  </div>
+                  <div class="column col-md-4">
+                    <p style="margin-bottom:3px ;"><strong> Sitemap</strong></p>
+                    <a class="text-decoration-none sitemap" href="#">home</a>
+                    <a class="text-decoration-none sitemap" href="#">produk</a>
+                    <a class="text-decoration-none sitemap" href="#">halaman admin</a>
+                    <a class="text-decoration-none sitemap" href="#">menyukai</a>
+                    <a class="text-decoration-none sitemap" href="#">keranjang</a>
+                  </div>
+                  <div class="column col-md-4">
+                    <p style="margin-bottom:3px ;"><strong> Social Media</strong></p>
+                    <a><i class="fa-brands fa-instagram"></i> @serendipity.house</a>
+                    <a><i class="fa-brands fa-facebook-f"></i> serendipity.indo</a>
+                    <a><i class="fa-brands fa-youtube"></i> serendipity.house</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+    </footer>
 
         
 

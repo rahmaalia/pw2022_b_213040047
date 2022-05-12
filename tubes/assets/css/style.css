@@ -70,18 +70,42 @@ a.icon:hover {
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
-.tall {
+.tall,
+.tote {
   height: 400px;
 }
 
 .well {
   background-color: #e7e7e9;
-}
-
-.tote {
-  height: 400px;
+  transition: all 0.6s;
 }
 
 .well img {
   margin-top: 50px;
+}
+
+.kategori {
+  background-color: #d8d3f1;
+}
+
+.well.gendong:hover {
+  background-color: #ffdac1;
+}
+
+.well.sling:hover {
+  background-color: #ffb7b2;
+}
+
+.well.tote:hover {
+  background-color: #ffeb87;
+}
+
+.footer {
+  background-color: #b6a9ef;
+}
+
+.column a {
+  display: block;
+  text-decoration: none;
+  color: #353535;
 }
