@@ -1,7 +1,7 @@
 <?php 
 
 require 'layout/functions.php';
-$produk = query("SELECT * FROM produk join kategori on kategori.id_kategori = produk.kategori_id ORDER BY id_produk LIMIT 4; ");
+$produk = query("SELECT * FROM produk join kategori on kategori.id_kategori = produk.kategori_id WHERE stok > 0 ORDER BY id_produk LIMIT 4 ; ");
 ?>
 
 <!DOCTYPE html>
@@ -15,9 +15,12 @@ $produk = query("SELECT * FROM produk join kategori on kategori.id_kategori = pr
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
 
     <!-- font awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
-
-
+    <link rel="stylesheet" src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet" />
+    
     <!-- js bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
@@ -27,15 +30,42 @@ $produk = query("SELECT * FROM produk join kategori on kategori.id_kategori = pr
 </head>
 <body class="index-body" style="background-color: #f1effc; ">
 
-    <nav class="navbar navbar-light navbar-expand-lg" style="background-color: #B6A9EF;">
-        <div class="container-fluid">
-            <a class="navbar-brand" href=""><img src="gambar/bg-seren.png" alt="bg" width="175"></a>
-            <ul class="navbar-nav">
-                <a href="" class="btn btn-login me-2 fw-bold text-white" style="font-family: 'Poppins', sans-serif;">Login</a>
-            </ul>
+  <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: #B6A9EF;">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.php"><img src="gambar/bg-seren.png" alt="bg" width="175"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-4">
+            <li class="nav-item me-2">
+              <a class="nav-link active  text-white" aria-current="page" href="index.php">home</a>
+            </li>
+            <li class="nav-item me-2">
+              <a class="nav-link active text-white" href="#">produk</a>
+            </li>
+            <li class="nav-item dropdown active ">
+              <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                lainnya
+              </a>
+              <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarDarkDropdownMenuLink">
+                <li><a class="dropdown-item" href="#">halaman admin</a></li>
+              </ul>
+            </li>
+          </ul>
+          <a class="icon text-decoration-none d-flex text-white " href="#" >
+            <i class="fa fa-heart"></i>
+          </a>
+          <a class="icon text-decoration-none d-flex text-white ms-3 " href="#" >
+            <i class="fas fa-shopping-cart"></i>
+          </a>
         </div>
+      </div>
     </nav>
+    <!-- END NAVBAR -->
 
+    <!-- KAROSEL -->
     <div class="home">
       <div id="carouselExampleIndicators" class="carousel slide karosel" data-bs-ride="carousel">
         <div class="carousel-indicators">
@@ -67,9 +97,9 @@ $produk = query("SELECT * FROM produk join kategori on kategori.id_kategori = pr
 
     <section id="data" class="container text-center my-3 ">
     <div class="row mt-5 justify-content-evenly">
-      <h3 class="produk-text mb-4 fw-bold ">produk</h3>
+      <h3 class="produk-text mb-4 fw-bold ">produk favorit</h3>
       <?php foreach ($produk as $pro) : ?>
-        <div class="col-sm-5 col-md-3">
+        <div class="col-sm-5 col-md-3 zoom">
           <a href="php/detail.php?id=<?= $pro['id_produk'] ?>"">
           <div class="card text-center mb-3">
             <img src="gambar/<?= $pro["gambar"]; ?>" class="card-img-top" width="200px">
@@ -83,9 +113,35 @@ $produk = query("SELECT * FROM produk join kategori on kategori.id_kategori = pr
         </div>
       <?php endforeach; ?>
     </div>
-    <a href="shoe.php" class="btn btn-login btn-3 mb-3 text-white rounded-pill">lihat produk lainnya</a>
-  </section>
+    <a href="shoe.php" class="btn btn-login btn-3 mb-3 mt-3 fs-6 text-white rounded-pill">lihat produk lainnya</a>
+    </section>
 
+    <section id="kategori" class="container text-center my-3 " >
+      <div class="row mt-5 justify-content-evenly">
+        <h3 class="produk-text mb-4 fw-bold ">kategori</h3>
+      </div>
+      <div class="container-fluid">
+          <div class="row">
+              <div class="col-xs-12 col-md-6 pull-right">
+                  <div class="well d-flex justify-content-evenly tall" >
+                      <img src="gambar/gendong3.jpg" alt="" style="width:320px;">
+                  </div>
+              </div>
+              <div class="col-xs-12 col-md-6">
+                  <div class="well tall">
+                    <img src="gambar/sling2.jpg" alt="" style="width:320px;">
+                  </div>
+              </div>
+              <div class="col-xs-12 col-md-12 pull-right mt-4">
+                  <div class="well tote">
+                    <img src="gambar/totebag2.jpg" alt="" style="width:310px;">
+                  </div>
+              </div>
+          </div>
+      </div>
+    </section>
+
+        
 
     <script src="assets/js/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
