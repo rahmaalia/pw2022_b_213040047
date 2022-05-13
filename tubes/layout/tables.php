@@ -131,7 +131,7 @@ if( isset($_POST ["cari"]) ) {
                   </div>
                 </div>
                 <div class="card-body">
-                  <div class="table-responsive">
+                  <div class="table">
                     <!-- TABEL -->
                     <table class="table">
                       <thead class="text-primary">
@@ -160,7 +160,7 @@ if( isset($_POST ["cari"]) ) {
                         <?php elseif($pro["stok"] < 1): ?>
                           <td class="col-1 text-danger font-weight-bold">STOK HABIS</td>
                         <?php endif; ?>
-                        <td>Rp.<?= $pro["harga"]; ?></td>
+                        <td><?= ubahRupiah($pro["harga"]) ; ?></td>
                         <td class="font-weight-bold text-secondary"><?= $pro["nama_kategori"]; ?></td>
                         <td><?= $pro["keterangan"]; ?></td>
                         

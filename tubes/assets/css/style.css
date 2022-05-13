@@ -118,6 +118,11 @@ a.icon:hover {
   height: 250px;
 }
 
+.header h1 {
+  /* color: #927ee7; */
+  color: #ffff;
+}
+
 /* end header */
 
 /* END PRODUK.PHP */

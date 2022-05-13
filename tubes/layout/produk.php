@@ -1,3 +1,9 @@
+<?php 
+
+require 'functions.php';
+$produk = query("SELECT * FROM produk join kategori on kategori.id_kategori = produk.kategori_id WHERE stok > 0 ORDER BY id_produk ; ");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,6 +26,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
 </head>
 <body class="index-body" style="background-color: #f1effc; ">
     <!-- NAVBAR -->
@@ -61,22 +68,45 @@
     <section class="header">
         <div class="container">
             <div class="wrapper-center">
-                <h1 class="pt-3 text-white"><strong> Dapatkan produk terbaik</strong></h1>
-                <h1 class="text-white"><strong> untuk dirimu</strong></h1>
+                <h1 class="pt-3 "><strong> Dapatkan produk terbaik</strong></h1>
+                <h1 class=""><strong> untuk dirimu</strong></h1>
             </div>
             <div class="col-md-4 p-0 mt-4" >
                 <form action="" method="POST"  >
                     <div class="input-group  ">
                         <span class="input-group-text bg-white" id="addon-wrapping"><i class="fa fa-search"></i></span>
                         <input type="text" class="form-control" placeholder="cari.." name="keyword" autocomplete="off" >
+                        <button type="submit" name="cari">Cari</button>
                     </div>
                 </form>
             </div>
-            
         </div>
         
     </section>
     <!-- END HEADER  -->
+
+    <!-- CARD -->
+    <section id="data" class="container text-center my-3 ">
+      <div class="row mt-5 justify-content-evenly">
+        <h3 class="produk-text mb-4 fw-bold ">Produk Serendipity</h3>
+        <?php foreach ($produk as $pro) : ?>
+          <div class="col-sm-5 col-md-3 zoom">
+            <a href="php/detail.php?id=<?= $pro['id_produk'] ?>"">
+            <div class="card text-center mb-3">
+              <img src="../gambar/<?= $pro["gambar"]; ?>" class="card-img-top" width="200px">
+              <div class="card-body">
+                <a class="btn btn-4 col-12 text-uppercase fw-bold fs-6 text-left" href="php/detail.php?id=<?= $pro['id_produk'] ?>">
+                  <?= $pro["nama_produk"]; ?>
+                </a>
+                <p class="text-left col-12"><?= ubahRupiah($pro["harga"]) ; ?></p>
+              </div>
+            </div>
+            </a>
+          </div>
+        <?php endforeach; ?>
+      </div>
+    </section>
+    <!-- END CARD -->
 
 
 

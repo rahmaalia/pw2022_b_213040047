@@ -143,4 +143,9 @@ function cari($keyword) {
     return query($query);
 }
 
+// UBAH MENJADI RUPIAH
+function ubahRupiah($angka){
+    return "Rp" . number_format($angka, 2, ',', '.');
+}
+
 ?>
