@@ -43,7 +43,7 @@ $produk = query("SELECT * FROM produk join kategori on kategori.id_kategori = pr
               <a class="nav-link active  text-white" aria-current="page" href="index.php">home</a>
             </li>
             <li class="nav-item me-2">
-              <a class="nav-link active text-white" href="#">produk</a>
+              <a class="nav-link active text-white" href="layout/produk.php">produk</a>
             </li>
             <li class="nav-item dropdown active ">
               <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -114,7 +114,7 @@ $produk = query("SELECT * FROM produk join kategori on kategori.id_kategori = pr
           </div>
         <?php endforeach; ?>
       </div>
-      <a href="shoe.php" class="btn btn-login btn-3 mb-3 mt-4 fs-6 text-white rounded-pill">lihat produk lainnya</a>
+      <a href="layout/produk.php" class="btn btn-login btn-3 mb-3 mt-4 fs-6 text-white rounded-pill">lihat produk lainnya</a>
     </section>
 
     <!-- KATEGORI -->

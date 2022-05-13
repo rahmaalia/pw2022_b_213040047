@@ -109,3 +109,15 @@ a.icon:hover {
   text-decoration: none;
   color: #353535;
 }
+
+/* PRODUK.PHP */
+
+/* header */
+.header {
+  background: url(../../gambar/produk-banner2.png) repeat 0 0;
+  height: 250px;
+}
+
+/* end header */
+
+/* END PRODUK.PHP */
