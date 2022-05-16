@@ -78,22 +78,22 @@ $produk = query("SELECT * FROM produk join kategori on kategori.id_kategori = pr
 
     <section class="detail">
       <div class="container">
-        <div class="row mt-5 mb-5">
+        <div class="row mt-3 mb-5">
         <?php foreach ($produk as $pro) : ?>
           <div class="col-md-6">
             <img src="../gambar/<?= $pro['gambar']; ?>" alt="" width="550">
           </div>
           <div class="col-md-6">
-            <div class="wrapper">
+            <div class="wrapper mt-4">
               <p><?= $pro['nama_kategori']; ?></p>
               <h2 class="tittle"> <?= $pro['nama_produk']; ?></h2>
-              <h5><?= ubahRupiah($pro["harga"]) ; ?></h5>
-              <p class="mt-3"><?= $pro['keterangan']; ?></p>
-              <p>Stok : <?= $pro['stok']; ?></p>
-              <div class="mb-3">
+              <h5 class="mt-4" style="color:#E7510D ;"><strong><?= ubahRupiah($pro["harga"]) ; ?></strong></h5>
+              <p class="mt-4"><?= $pro['keterangan']; ?></p>
+              <p class="mt-4">Stok : <?= $pro['stok']; ?></p>
+              <div class="mb-3 mt-4">
                 <input type="number" class="form-control"  value="1" style="width:6ch ;" >
               </div>
-              <div class="btn-group btn-keranjang" role="group" aria-label="Basic example">
+              <div class="btn-group btn-keranjang mt-4" role="group" aria-label="Basic example">
                 <button type="button" class="btn text-white" style="background-color:#8064a2 ;"> Tambahkan ke kerangjang</button>
                 <button type="button" class="btn text-white" style="background-color: #adb5bd;"><i class="fa fa-heart"></i></button>
               </div>
