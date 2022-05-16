@@ -1,7 +1,11 @@
 <?php 
 
 require 'functions.php';
-$produk = query("SELECT * FROM produk join kategori on kategori.id_kategori = produk.kategori_id WHERE stok > 0 ORDER BY id_produk ; ");
+$produk = query("SELECT * FROM produk join kategori on kategori.id_kategori = produk.kategori_id WHERE stok > 0 ORDER BY kategori_id ; ");
+
+if( isset($_POST ["cari"]) ) {
+  $produk = cari($_POST["keyword"]);
+} 
 ?>
 
 <!DOCTYPE html>
@@ -85,17 +89,17 @@ $produk = query("SELECT * FROM produk join kategori on kategori.id_kategori = pr
     </section>
     <!-- END HEADER  -->
 
-    <!-- CARD -->
+    <!-- CARD PRODUK -->
     <section id="data" class="container text-center my-3 ">
-      <div class="row mt-5 justify-content-evenly">
+      <div class="row mt-5 justify-content">
         <h3 class="produk-text mb-4 fw-bold ">Produk Serendipity</h3>
         <?php foreach ($produk as $pro) : ?>
           <div class="col-sm-5 col-md-3 zoom">
-            <a href="php/detail.php?id=<?= $pro['id_produk'] ?>"">
+            <a href="detail.php?id=<?= $pro['id_produk'] ?>"">
             <div class="card text-center mb-3">
               <img src="../gambar/<?= $pro["gambar"]; ?>" class="card-img-top" width="200px">
               <div class="card-body">
-                <a class="btn btn-4 col-12 text-uppercase fw-bold fs-6 text-left" href="php/detail.php?id=<?= $pro['id_produk'] ?>">
+                <a class="btn btn-4 col-12 text-uppercase fw-bold fs-6 text-left" href="detail.php?id=<?= $pro['id_produk'] ?>">
                   <?= $pro["nama_produk"]; ?>
                 </a>
                 <p class="text-left col-12"><?= ubahRupiah($pro["harga"]) ; ?></p>
@@ -108,7 +112,40 @@ $produk = query("SELECT * FROM produk join kategori on kategori.id_kategori = pr
     </section>
     <!-- END CARD -->
 
+    <a href="detail.php">hai guys</a>
 
+    <!-- FOOTER -->
+    <footer class="footer">
+          <div class="container pt-5">
+            <div class="content">
+              <div class="columns is-multiline">
+                <div class="row">
+                  <div class="column col-md-4">
+                    <img src="../gambar/bg-seren.png" alt="" width="175">
+                    <p class="mt-3"><strong> Bring your life</strong> </p>
+                    <p style="margin-bottom:3px ;"><i class="fa-solid fa-location-dot"></i>   Cimahi, Jawa Barat, Indonesia </p>
+                    <p style="margin-bottom:3px ;"><i class="fa-solid fa-phone"></i> 0211233456</p>
+                    <p><i class="fa-solid fa-envelope"></i> serendipity@gmail.com</p>
+                  </div>
+                  <div class="column col-md-4">
+                    <p style="margin-bottom:3px ;"><strong> Sitemap</strong></p>
+                    <a class="text-decoration-none sitemap" href="#">home</a>
+                    <a class="text-decoration-none sitemap" href="#">produk</a>
+                    <a class="text-decoration-none sitemap" href="#">halaman admin</a>
+                    <a class="text-decoration-none sitemap" href="#">menyukai</a>
+                    <a class="text-decoration-none sitemap" href="#">keranjang</a>
+                  </div>
+                  <div class="column col-md-4">
+                    <p style="margin-bottom:3px ;"><strong> Social Media</strong></p>
+                    <a><i class="fa-brands fa-instagram"></i> @serendipity.house</a>
+                    <a><i class="fa-brands fa-facebook-f"></i> serendipity.indo</a>
+                    <a><i class="fa-brands fa-youtube"></i> serendipity.house</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+    </footer>
 
     <script src="assets/js/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

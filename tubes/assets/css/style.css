@@ -126,3 +126,9 @@ a.icon:hover {
 /* end header */
 
 /* END PRODUK.PHP */
+
+/* DETAIL.PHP */
+.btn-keranjang button.btn-chart {
+  background-color: #8064a2;
+}
+/* END DETAIL */

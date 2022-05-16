@@ -1,223 +1,148 @@
+<?php 
+
+
+// mengecek apakah ada id yang dikirim dari index
+// jika tidak ada maka akan di redirect ke halaman index.php
+if(!isset($_GET['id'])){
+  header("Location : ../index.php");
+  exit;
+}
+
+require 'functions.php';
+// mengambil id dari url
+$id = $_GET['id'];
+
+$produk = query("SELECT * FROM produk join kategori on kategori.id_kategori = produk.kategori_id WHERE id_produk = $id");
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detail <?= $item["furniture_name"];  ?></title>
-    <link rel="shortcut icon" href="../assets/img/icon-browser.png" type="image/x-icon">
-    <!-- Bulma CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
-    <!-- Slick CSS -->
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css">
-    <!-- My CSS -->
-    <link rel="stylesheet" href="../css/index.css">
-    <link rel="stylesheet" href="../css/detail.css">
+    <title>Produk</title>
+    <!-- css  -->
+    <link rel="stylesheet" href="../assets/css/style.css" />
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+
+    <!-- font awesome -->
+    <link rel="stylesheet" src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet" />
+    
+    <!-- js bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
 </head>
+<body class="index-body" style="background-color: #f1effc; ">
 
-<body>
-    <!-- Navbar -->
-    <section id="navbar">
-        <nav class="navbar is-transparent is-fixed-top" role="navigation" aria-label="main navigation">
-            <div class="container">
-                <div class="navbar-brand">
-                    <a class="navbar-item">
-                        <img src="../assets/img/logo.svg">
-                    </a>
-
-                    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navMenu" id="burger">
-                        <span aria-hidden="true"></span>
-                        <span aria-hidden="true"></span>
-                        <span aria-hidden="true"></span>
-                    </a>
-                </div>
-
-                <div id="nav-links" class="navbar-menu">
-                    <div class="navbar-end">
-                        <a href="../index.php" class="navbar-item">
-                            Home
-                        </a>
-
-                        <a href="product.php" class="navbar-item">
-                            Product
-                        </a>
-
-                        <div class="navbar-item has-dropdown is-hoverable">
-                            <a class="navbar-link">
-                                More
-                            </a>
-
-                            <div class="navbar-dropdown">
-                                <a href="admin.php" class="navbar-item">
-                                    Admin Page
-                                </a>
-                            </div>
-                        </div>
-
-                        <a class="navbar-item">
-                            <ion-icon name="heart-outline"></ion-icon>
-                        </a>
-
-                        <a class="navbar-item">
-                            <ion-icon name="cart-outline"></ion-icon>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </nav>
-    </section>
-    <!-- End Navbar -->
-
-    <!-- Detail Product -->
-    <section class="detail-product">
-        <div class="container">
-            <div class="columns">
-                <div class="column">
-                    <img src="../gambar/gendong1.jpg" alt="">
-                </div>
-                <div class="column">
-                    <div class="wrapper">
-                        <h2 class="title is-size-4 pb-1">ini nama barang</h2>
-                        <p class="subtitle is-size-6">ini deskripsi</p>
-                        <p class="subtitle is-size-6">ini detail</p>
-                        <p class="subtitle is-size-6">
-                            <ion-icon name="pricetags-outline"></ion-icon>
-                            Terjual Sebanyak <?= rand(0, 500); ?>
-                        <p class="mb-3">Sisa Stok <?= $item['stock_quantity']; ?></p>
-                        </p>
-                        <div class="pieces mb-3" style="width: 6ch;">
-                            <input class="input" type="number" value="1">
-
-                        </div>
-
-                        <button class="button mb-3">
-                            <p>
-                                <ion-icon name="heart-outline"></ion-icon>
-                                Add To Wishlist
-                            </p>
-                        </button>
-                        <button class="button">
-                            <p>
-                                <ion-icon name="cart-outline"></ion-icon>
-                                Add To Cart
-                            </p>
-                        </button>
-                    </div>
-                </div>
-            </div>
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: #B6A9EF;">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="../index.php"><img src="../gambar/bg-seren.png" alt="bg" width="175"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-4">
+            <li class="nav-item me-2">
+              <a class="nav-link active  text-white" aria-current="page" href="../index.php">home</a>
+            </li>
+            <li class="nav-item me-2">
+              <a class="nav-link active text-white" href="produk.php">produk</a>
+            </li>
+            <li class="nav-item dropdown active ">
+              <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                lainnya
+              </a>
+              <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarDarkDropdownMenuLink">
+                <li><a class="dropdown-item" href="#">halaman admin</a></li>
+              </ul>
+            </li>
+          </ul>
+          <a class="icon text-decoration-none d-flex text-white " href="#" >
+            <i class="fa fa-heart"></i>
+          </a>
+          <a class="icon text-decoration-none d-flex text-white ms-3 " href="#" >
+            <i class="fas fa-shopping-cart"></i>
+          </a>
         </div>
-    </section>
-    <!-- End Detail Product -->
+      </div>
+    </nav>
+    <!-- END NAVBAR -->
 
-    <!-- Another Product -->
-    <section class="best-choice">
-        <span></span>
-        <div class="container">
-            <h2 class="title is-size-4 pb-3 mt-5">Another Product</h2>
-            <div class="slider-best-choice">
-                <?php foreach ($items as $item) : ?>
-                    <div class="wrapper">
-                        <a href="detail.php?id=<?= $item['id']; ?>">
-                            <div class="card" style="border-radius: 5px;">
-                                <div class="card-image">
-                                    <figure class="image">
-                                        <img style="padding: 10px;" src="../assets/img/<?= $item['picture']; ?>" alt="">
-                                    </figure>
-                                </div>
-                                <div class="card-content">
-                                    <div class="media">
-                                        <div class="media-content">
-                                            <p class="title is-size-6"><?= $item['furniture_name']; ?></p>
-                                            <p class="subtitle is-size-6">hai</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                <?php endforeach; ?>
+    <section class="detail">
+      <div class="container">
+        <div class="row mt-5 mb-5">
+        <?php foreach ($produk as $pro) : ?>
+          <div class="col-md-6">
+            <img src="../gambar/<?= $pro['gambar']; ?>" alt="" width="550">
+          </div>
+          <div class="col-md-6">
+            <div class="wrapper">
+              <p><?= $pro['nama_kategori']; ?></p>
+              <h2 class="tittle"> <?= $pro['nama_produk']; ?></h2>
+              <h5><?= ubahRupiah($pro["harga"]) ; ?></h5>
+              <p class="mt-3"><?= $pro['keterangan']; ?></p>
+              <p>Stok : <?= $pro['stok']; ?></p>
+              <div class="mb-3">
+                <input type="number" class="form-control"  value="1" style="width:6ch ;" >
+              </div>
+              <div class="btn-group btn-keranjang" role="group" aria-label="Basic example">
+                <button type="button" class="btn text-white" style="background-color:#8064a2 ;"> Tambahkan ke kerangjang</button>
+                <button type="button" class="btn text-white" style="background-color: #adb5bd;"><i class="fa fa-heart"></i></button>
+              </div>
             </div>
+          </div>
         </div>
+        <?php endforeach; ?>
+      </div>
     </section>
-    <!-- End Another Product -->
 
-    <!-- Footer -->
+    
+
+    <!-- FOOTER -->
     <footer class="footer">
-        <div class="container">
+          <div class="container pt-5">
             <div class="content">
-                <div class="columns is-multiline">
-                    <div class="column">
-                        <img src="../assets/img/logo.svg" alt="" style="width: 150px;">
-                        <p>Full Of Love With Fullniture
-                        </p>
-                        <p style="margin-bottom: 3px;">
-                            <ion-icon name="map-outline"></ion-icon>
-                            Cianjur, Jawa Barat Indonesia.</Cianjur,>
-                        <p style="margin-bottom: 3px;">
-                            <ion-icon name="call-outline"></ion-icon>
-                            0263 - 123321
-                        </p>
-                        <p>
-                            <ion-icon name="mail-open-outline"></ion-icon>
-                            fullniture@imfaditya.com
-                        </p>
-                    </div>
-                    <div class="column">
-                        <p style="margin-bottom: 3px;"><strong>Sitemap</strong></p>
-                        <a href="">Home</a>
-                        <a href="">Product</a>
-                        <a href="">Admin Page</a>
-                        <a href="">Cart</a>
-                        <a href="">Wishlist</a>
-                    </div>
-                    <div class="column">
-                        <p style="margin-bottom: 3px;"><strong>Information</strong></p>
-                        <a href="">FAQ</a>
-                        <a href="">Return Policy</a>
-                        <a href="">Delivery</a>
-                        <a href="">Tax</a>
-                        <a href="">Export</a>
-                    </div>
-                    <div class="column">
-                        <p style="margin-bottom: 3px;"><strong>Social Media</strong></p>
-                        <a>
-                            <ion-icon name="logo-facebook"></ion-icon>
-                            Fullniture Indonesia
-                        </a>
-                        <a>
-                            <ion-icon name="logo-twitter"></ion-icon>
-                            @fullniture.id
-                        </a>
-                        <a>
-                            <ion-icon name="logo-instagram"></ion-icon>
-                            @fullnitureindonesia
-                        </a>
-                    </div>
-                    <div class="column">
-                        <p style="margin-bottom: 3px;"><strong>Help</strong></p>
-                        <a href="">Privacy Policy</a>
-                        <a href="">Terms and Condition</a>
-                    </div>
+              <div class="columns is-multiline">
+                <div class="row">
+                  <div class="column col-md-4">
+                    <img src="../gambar/bg-seren.png" alt="" width="175">
+                    <p class="mt-3"><strong> Bring your life</strong> </p>
+                    <p style="margin-bottom:3px ;"><i class="fa-solid fa-location-dot"></i>   Cimahi, Jawa Barat, Indonesia </p>
+                    <p style="margin-bottom:3px ;"><i class="fa-solid fa-phone"></i> 0211233456</p>
+                    <p><i class="fa-solid fa-envelope"></i> serendipity@gmail.com</p>
+                  </div>
+                  <div class="column col-md-4">
+                    <p style="margin-bottom:3px ;"><strong> Sitemap</strong></p>
+                    <a class="text-decoration-none sitemap" href="#">home</a>
+                    <a class="text-decoration-none sitemap" href="#">produk</a>
+                    <a class="text-decoration-none sitemap" href="#">halaman admin</a>
+                    <a class="text-decoration-none sitemap" href="#">menyukai</a>
+                    <a class="text-decoration-none sitemap" href="#">keranjang</a>
+                  </div>
+                  <div class="column col-md-4">
+                    <p style="margin-bottom:3px ;"><strong> Social Media</strong></p>
+                    <a><i class="fa-brands fa-instagram"></i> @serendipity.house</a>
+                    <a><i class="fa-brands fa-facebook-f"></i> serendipity.indo</a>
+                    <a><i class="fa-brands fa-youtube"></i> serendipity.house</a>
+                  </div>
                 </div>
-                <div class="columns mt-3">
-                    <div class="column">
-                        <p>
-                            <strong>Fullniture</strong> by <a style="display: inline;" href="https://instagram.com/imfaditya">Imam Faraz Aditya</a>. All The Product Picture Belongs To
-                            <a style="display: inline;" href="http://ikea.co.id">IKEA</a>.
-                        </p>
-                    </div>
-                </div>
+              </div>
             </div>
-        </div>
+          </div>
     </footer>
-    <!-- End Footer -->
 
-    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" referrerpolicy="no-referrer"></script>
-    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-    <script src="../js/index.js"></script>
+    <script src="assets/js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
-
-</html>   
+</html>

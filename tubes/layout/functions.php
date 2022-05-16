@@ -137,15 +137,14 @@ function cari($keyword) {
                 nama_produk LIKE '%$keyword%' OR
                 stok LIKE '%$keyword%' OR
                 harga LIKE '%$keyword%' OR
-                kategori_id LIKE '%$keyword%' OR
-                keterangan LIKE '%$keyword%'
+                kategori_id LIKE '%$keyword%' 
             ";
     return query($query);
 }
 
 // UBAH MENJADI RUPIAH
 function ubahRupiah($angka){
-    return "Rp" . number_format($angka, 2, ',', '.');
+    return "Rp" . number_format($angka, 0, ',', '.');
 }
 
 ?>
