@@ -79,8 +79,7 @@ if( isset($_POST ["cari"]) ) {
                 <form action="" method="POST"  >
                     <div class="input-group  ">
                         <span class="input-group-text bg-white" id="addon-wrapping"><i class="fa fa-search"></i></span>
-                        <input type="text" class="form-control" placeholder="cari.." name="keyword" autocomplete="off" >
-                        <button type="submit" name="cari">Cari</button>
+                        <input type="text" class="form-control" placeholder="cari.." name="keyword" autocomplete="off" id="keyword" >
                     </div>
                 </form>
             </div>
@@ -90,26 +89,28 @@ if( isset($_POST ["cari"]) ) {
     <!-- END HEADER  -->
 
     <!-- CARD PRODUK -->
-    <section id="data" class="container text-center my-3 ">
-      <div class="row mt-5 justify-content">
-        <h3 class="produk-text mb-4 fw-bold ">Produk Serendipity</h3>
-        <?php foreach ($produk as $pro) : ?>
-          <div class="col-sm-5 col-md-3 zoom">
-            <a href="detail.php?id=<?= $pro['id_produk'] ?>"">
-            <div class="card text-center mb-3">
-              <img src="../gambar/<?= $pro["gambar"]; ?>" class="card-img-top" width="200px">
-              <div class="card-body">
-                <a class="btn btn-4 col-12 text-uppercase fw-bold fs-6 text-left" href="detail.php?id=<?= $pro['id_produk'] ?>">
-                  <?= $pro["nama_produk"]; ?>
-                </a>
-                <p class="text-left col-12"><?= ubahRupiah($pro["harga"]) ; ?></p>
+    <div id="container">
+      <section id="data" class="container text-center my-3 ">
+        <div class="row mt-5 justify-content">
+          <h3 class="produk-text mb-4 fw-bold ">Produk Serendipity</h3>
+          <?php foreach ($produk as $pro) : ?>
+            <div class="col-sm-5 col-md-3 zoom">
+              <a href="detail.php?id=<?= $pro['id_produk'] ?>"">
+              <div class="card text-center mb-3">
+                <img src="../gambar/<?= $pro["gambar"]; ?>" class="card-img-top" width="200px">
+                <div class="card-body">
+                  <a class="btn btn-4 col-12 text-uppercase fw-bold fs-6 text-left" href="detail.php?id=<?= $pro['id_produk'] ?>">
+                    <?= $pro["nama_produk"]; ?>
+                  </a>
+                  <p class="text-left col-12"><?= ubahRupiah($pro["harga"]) ; ?></p>
+                </div>
               </div>
+              </a>
             </div>
-            </a>
-          </div>
-        <?php endforeach; ?>
-      </div>
-    </section>
+          <?php endforeach; ?>
+        </div>
+      </section>
+    </div>
     <!-- END CARD -->
 
     <!-- FOOTER -->
@@ -145,10 +146,35 @@ if( isset($_POST ["cari"]) ) {
           </div>
     </footer>
 
-    <script src="assets/js/script.js"></script>
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="../assets/js/script.js"></script>
+    <script>
+      // LIVE SEARCH
+      // ambil elemen yang dibutuhkan
+      var keyword = document.getElementById('keyword');
+      var tombolCari = document.getElementById('tombol-cari');
+      var container = document.getElementById('container');
+
+      // tambahkan event ketika keyword ditulis
+      keyword.addEventListener('keyup', function () {
+        // buat object ajax
+        var xhr = new XMLHttpRequest();
+
+        // cek kesiapan ajax
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState == 4 && xhr.status == 200) {
+            container.innerHTML = xhr.responseText;
+          }
+        };
+
+        // eksekusi ajax
+        xhr.open('GET', '../ajax/search-produk.php?keyword=' + keyword.value, true);
+        xhr.send();
+      });
+    </script>
 </body>
 </html>

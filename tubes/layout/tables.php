@@ -91,7 +91,6 @@ if( isset($_POST ["cari"]) ) {
                   <div class="input-group-append">
                     <div class="input-group-text">
                       <i class="nc-icon nc-zoom-split"></i>
-                      <button type="submit" name="cari" id="tombol-cari">Cari</button>
                     </div>
                   </div>
                 </div>
@@ -205,7 +204,7 @@ if( isset($_POST ["cari"]) ) {
     <script src="../assets/js/plugins/bootstrap-notify.js"></script>
     <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="../assets/js/paper-dashboard.min.js?v=2.0.1" type="text/javascript"></script>
-    <script src="../assets/js/script.js" type="text/javascript"></script>
+    <script src="../tubes/assets/js/script.js" type="text/javascript"></script>
     
     <script>
 

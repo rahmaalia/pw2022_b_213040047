@@ -46,11 +46,9 @@ if( isset($_POST ["cari"]) ) {
     <div class="wrapper">
       <div class="sidebar" data-color="white" data-active-color="danger">
         <div class="logo">
-          <a href="dashboard.html" class="simple-text logo-normal">
-            SERENDIPITY
-            <!-- <div class="logo-image-big">
-            <img src="../assets/img/logo-big.png">
-          </div> -->
+          <a href="dashboard.html" class="simple-text logo-normal ms-3">
+            <strong> SERENDIPITY </strong>
+            
           </a>
         </div>
         <div class="sidebar-wrapper">
@@ -92,11 +90,10 @@ if( isset($_POST ["cari"]) ) {
             <div class="collapse navbar-collapse justify-content-end" id="navigation">
             <form action="" method="post">
                 <div class="input-group no-border">
-                  <input type="text" name="keyword" value="" class="form-control" placeholder="Cari..." autocomplete="off" />
+                  <input type="text" name="keyword" value="" class="form-control" placeholder="Cari..." autocomplete="off" id="keyword" />
                   <div class="input-group-append">
                     <div class="input-group-text">
                       <i class="nc-icon nc-zoom-split"></i>
-                      <button type="submit" name="cari">Cari</button>
                     </div>
                   </div>
                 </div>
@@ -213,38 +210,40 @@ if( isset($_POST ["cari"]) ) {
               </div>
               <div class="card-body">
                 <div class="table">
-                  <!-- TABLE -->
-                  <table class="table">
-                      <thead class="text-primary">
-                        <th>No</th>
-                        <th>Gambar</th>
-                        <th>Nama</th>
-                        <th>Stok</th>
-                        <th>Harga</th>
-                        <th>Kategori</th>
-                        <th>Keterangan</th>
-                      </thead>
-                      <tbody>
-                        <?php $i = 1; ?>
-                        <?php foreach($produk as $pro): ?>
-                        <tr>
-                        <td><?= $i; ?></td>
-                        <td><img src="../gambar/<?= $pro["gambar"]; ?>" width="100" alt=""></td>
-                        <td class="font-weight-bold" ><?= $pro["nama_produk"]; ?></td>
-                        <?php if($pro["stok"] > 0): ?>
-                          <td class="font-weight-bold text-secondary" ><?= $pro["stok"]; ?></td>
-                        <?php elseif($pro["stok"] < 1): ?>
-                          <td class="col-1 text-danger font-weight-bold">STOK HABIS</td>
-                        <?php endif; ?>
-                        <td><?= ubahRupiah($pro["harga"]) ; ?></td>
-                        <td class="font-weight-bold text-secondary"><?= $pro["nama_kategori"]; ?></td>
-                        <td><?= $pro["keterangan"]; ?></td>
-                        </tr>
-                        <?php $i++; ?>
-                        <?php endforeach; ?>
-                      </tbody>
-                    </table>
-                  <!-- end table -->
+                  <div id="container">
+                    <!-- TABLE -->
+                    <table class="table">
+                        <thead class="text-primary">
+                          <th>No</th>
+                          <th>Gambar</th>
+                          <th>Nama</th>
+                          <th>Stok</th>
+                          <th>Harga</th>
+                          <th>Kategori</th>
+                          <th>Keterangan</th>
+                        </thead>
+                        <tbody>
+                          <?php $i = 1; ?>
+                          <?php foreach($produk as $pro): ?>
+                          <tr>
+                          <td><?= $i; ?></td>
+                          <td><img src="../gambar/<?= $pro["gambar"]; ?>" width="100" alt=""></td>
+                          <td class="font-weight-bold" ><?= $pro["nama_produk"]; ?></td>
+                          <?php if($pro["stok"] > 0): ?>
+                            <td class="font-weight-bold text-secondary" ><?= $pro["stok"]; ?></td>
+                          <?php elseif($pro["stok"] < 1): ?>
+                            <td class="col-1 text-danger font-weight-bold">STOK HABIS</td>
+                          <?php endif; ?>
+                          <td><?= ubahRupiah($pro["harga"]) ; ?></td>
+                          <td class="font-weight-bold text-secondary"><?= $pro["nama_kategori"]; ?></td>
+                          <td><?= $pro["keterangan"]; ?></td>
+                          </tr>
+                          <?php $i++; ?>
+                          <?php endforeach; ?>
+                        </tbody>
+                      </table>
+                    <!-- end table -->
+                  </div>
                 </div>
               </div>
             </div>
@@ -272,21 +271,41 @@ if( isset($_POST ["cari"]) ) {
     <script src="../assets/js/core/popper.min.js"></script>
     <script src="../assets/js/core/bootstrap.min.js"></script>
     <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
-    <!--  Google Maps Plugin    -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-    <!-- Chart JS -->
-    <script src="../assets/js/plugins/chartjs.min.js"></script>
     <!--  Notifications Plugin    -->
     <script src="../assets/js/plugins/bootstrap-notify.js"></script>
     <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="../assets/js/paper-dashboard.min.js?v=2.0.1" type="text/javascript"></script>
-    <!-- Paper Dashboard DEMO methods, don't include it in your project! -->
-    <script src="../assets/demo/demo.js"></script>
     <script>
       $(document).ready(function () {
         // Javascript method's body can be found in assets/assets-for-demo/js/demo.js
         demo.initChartsPages();
       });
     </script>
+    <script>
+
+      var keyword = document.getElementById('keyword');
+      var tombolCari = document.getElementById('tombol-cari');
+      var container = document.getElementById('container');
+
+      // tambahkan event ketika keyword ditulis
+      keyword.addEventListener('keyup', function () {
+        // buat object ajax
+      var xhr = new XMLHttpRequest();
+
+      // cek kesiapan ajax
+      xhr.onreadystatechange = function(){
+      if( xhr.readyState == 4 && xhr.status == 200){
+        container.innerHTML = xhr.responseText;
+      }
+      }
+
+      // eksekusi ajax
+      xhr.open ('GET', '../ajax/search-dashboard.php?keyword=' + keyword.value, true);
+      xhr.send();
+      });
+
+
+      </script>
+
   </body>
 </html>
