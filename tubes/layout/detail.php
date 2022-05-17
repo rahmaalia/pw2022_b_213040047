@@ -94,7 +94,7 @@ $produk = query("SELECT * FROM produk join kategori on kategori.id_kategori = pr
                 <input type="number" class="form-control"  value="1" style="width:6ch ;" >
               </div>
               <div class="btn-group btn-keranjang mt-4" role="group" aria-label="Basic example">
-                <button type="button" class="btn text-white" style="background-color:#8064a2 ;"> Tambahkan ke kerangjang</button>
+                <button type="button" class="btn text-white" style="background-color:#8064a2 ;"> Tambahkan ke keranjang</button>
                 <button type="button" class="btn text-white" style="background-color: #adb5bd;"><i class="fa fa-heart"></i></button>
               </div>
             </div>

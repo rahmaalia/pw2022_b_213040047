@@ -101,11 +101,11 @@ $produk = query("SELECT * FROM produk join kategori on kategori.id_kategori = pr
         <h3 class="produk-text mb-4 fw-bold ">produk favorit</h3>
         <?php foreach ($produk as $pro) : ?>
           <div class="col-sm-5 col-md-3 zoom">
-            <a href="php/detail.php?id=<?= $pro['id_produk'] ?>"">
+            <a href="layout/detail.php?id=<?= $pro['id_produk'] ?>"">
             <div class="card text-center mb-3">
               <img src="gambar/<?= $pro["gambar"]; ?>" class="card-img-top" width="200px">
               <div class="card-body">
-                <a class="btn btn-4 col-12 text-uppercase fw-bold fs-6 text-left" href="php/detail.php?id=<?= $pro['id_produk'] ?>">
+                <a class="btn btn-4 col-12 text-uppercase fw-bold fs-6 text-left" href="layout/detail.php?id=<?= $pro['id_produk'] ?>">
                   <?= $pro["nama_produk"]; ?>
                 </a>
                 <p class="text-left col-12"><?= ubahRupiah($pro["harga"]) ; ?></p>

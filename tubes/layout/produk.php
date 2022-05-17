@@ -112,8 +112,6 @@ if( isset($_POST ["cari"]) ) {
     </section>
     <!-- END CARD -->
 
-    <a href="detail.php">hai guys</a>
-
     <!-- FOOTER -->
     <footer class="footer">
           <div class="container pt-5">
