@@ -1,4 +1,9 @@
 <?php 
+session_start();
+if(!isset($_SESSION["login"])){
+  header("Location:login.php");
+  exit;
+}
 
 require 'functions.php';
 $produk = query("SELECT * FROM produk join kategori on kategori.id_kategori = produk.kategori_id ORDER BY id_produk DESC");
@@ -100,18 +105,10 @@ if( isset($_POST ["cari"]) ) {
               </form>
               <ul class="navbar-nav">
                 <li class="nav-item">
-                  <a class="nav-link btn-magnify" href="javascript:;">
-                    <i class="nc-icon nc-layout-11"></i>
+                  <a class="nav-link btn-magnify" href="logout.php">
+                    <i class="fas fa-sign-out-alt"></i>
                     <p>
-                      <span class="d-lg-none d-md-block">Stats</span>
-                    </p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link btn-rotate" href="javascript:;">
-                    <i class="nc-icon nc-settings-gear-65"></i>
-                    <p>
-                      <span class="d-lg-none d-md-block">Account</span>
+                      <span class="d-lg-none d-md-block">Logout</span>
                     </p>
                   </a>
                 </li>

@@ -11,6 +11,12 @@ body.index-body {
   padding-top: 68px;
 }
 
+.regis-body {
+  font-family: 'Poppins', sans-serif;
+  color: var(--primay);
+  background-color: #f1effc;
+}
+
 .bg-main {
   /* background-color: rebeccapurple; */
   background-image: url('../../gambar/bg.jpg');
@@ -132,3 +138,28 @@ a.icon:hover {
   background-color: #8064a2;
 }
 /* END DETAIL */
+
+/* RGIS */
+.regis {
+  background-image: url('../../gambar/bg-regis4.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.regis-form {
+  background-color: #f1effc;
+}
+
+.btn-regis {
+  background-color: #927ee7;
+  color: white;
+}
+
+.btn-regis:hover {
+  background-color: #8064a2;
+  color: white;
+}
+
+.text-regis {
+  color: #47414d;
+}

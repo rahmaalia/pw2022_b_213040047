@@ -1,4 +1,9 @@
 <?php 
+session_start();
+if (!isset($_SESSION["login"])) {
+  header("Location: login.php");
+  exit;
+}
 
 require 'functions.php';
 $produk = query("SELECT * FROM produk join kategori on kategori.id_kategori = produk.kategori_id ORDER BY id_produk DESC");
@@ -34,17 +39,8 @@ if( isset($_POST ["cari"]) ) {
     <div class="wrapper">
       <div class="sidebar" data-color="white" data-active-color="danger">
         <div class="logo">
-          <a href="https://www.creative-tim.com" class="simple-text logo-mini">
-            <div class="logo-image-small">
-              <img src="../assets/img/logo-small.png" />
-            </div>
-            <!-- <p>CT</p> -->
-          </a>
-          <a href="#" class="simple-text logo-normal">
-             SERENDIPITY
-            <!-- <div class="logo-image-big">
-            <img src="../assets/img/logo-big.png">
-          </div> -->
+          <a href="dashboard.php" class="simple-text logo-normal ml-4">
+             <h5>SERENDIPITY</h5>
           </a>
         </div>
         <div class="sidebar-wrapper">
@@ -98,16 +94,8 @@ if( isset($_POST ["cari"]) ) {
               <!-- END SEARCH -->
               <ul class="navbar-nav">
                 <li class="nav-item">
-                  <a class="nav-link btn-magnify" href="javascript:;">
-                    <i class="nc-icon nc-layout-11"></i>
-                    <p>
-                      <span class="d-lg-none d-md-block">Stats</span>
-                    </p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link btn-rotate" href="javascript:;">
-                    <i class="nc-icon nc-settings-gear-65"></i>
+                    <a class="nav-link btn-magnify" href="logout.php">
+                    <i class="fas fa-sign-out-alt"></i>
                     <p>
                       <span class="d-lg-none d-md-block">Account</span>
                     </p>

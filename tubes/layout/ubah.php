@@ -1,4 +1,9 @@
 <?php 
+session_start();
+if(!isset($_SESSION["login"])){
+  header("Location:login.php");
+  exit;
+}
 require 'functions.php';
 
 // ambil data di url
@@ -6,8 +11,7 @@ $id = $_GET["id_produk"];
 
 // query data mahasiswa berdasarkan id
 $pro = query("SELECT * FROM produk WHERE id_produk = $id ")[0];
-// var_dump($pro);
-
+// var_dump($pro); die;
 
 // cek apakah tombol submit telah ditekan atau belum
 if (isset($_POST["submit"])) {
