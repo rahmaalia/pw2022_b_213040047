@@ -8,10 +8,25 @@ if (!isset($_SESSION["login"])) {
 require 'functions.php';
 $produk = query("SELECT * FROM produk join kategori on kategori.id_kategori = produk.kategori_id ORDER BY id_produk DESC");
 
+$hTinggi = query("SELECT * FROM produk join kategori on kategori.id_kategori = produk.kategori_id ORDER BY harga DESC");
+
+$hRendah = query("SELECT * FROM produk join kategori on kategori.id_kategori = produk.kategori_id ORDER BY harga ASC");
+
+
 // jika tombol cari diklik
 if( isset($_POST ["cari"]) ) {
   $produk = cari($_POST["keyword"]);
 } 
+
+// jika dropdown tinggi diklik
+if( isset($_POST ["tinggi"]) ) {
+  $produk = $hTinggi;
+}
+
+// jika dropdown rendah diklik
+if( isset($_POST ["rendah"]) ) {
+  $produk = $hRendah;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -56,6 +71,9 @@ if( isset($_POST ["cari"]) ) {
                 <i class="nc-icon nc-tile-56"></i>
                 <p>Data penjualan</p>
               </a>
+            </li>
+            <li class=" col-md-12">
+            <a href="cetak.php" type="button" class="btn btn-primary text-white"> Cetak</a>
             </li>
           </ul>
         </div>
@@ -113,7 +131,21 @@ if( isset($_POST ["cari"]) ) {
                 <div class="card-header m-3" >
                   <div class="row justify-content-between ">
                   <h4 class="card-title ">Serendipity</h4>
-                  <a href="tambah.php" class="btn btn-success  float-sm-end">+ tambah data</a>
+                  <div class="d-flex justify-content-end">
+                    <form action="" method="post">
+                      <div class="dropdown">
+                        <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+                          Filter Harga
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <Button class="dropdown-item" name="tinggi" type="submit" >Tertinggi</Button>
+                          <Button class="dropdown-item" name="rendah" type="submit">Terendah</Button>
+                        </div>
+                      </div>
+                      </form>
+                      <a href="tambah.php" class="btn btn-success  float-sm-end">+ tambah data</a>
+                  </div>
+                  
                   </div>
                 </div>
                 <div class="card-body">

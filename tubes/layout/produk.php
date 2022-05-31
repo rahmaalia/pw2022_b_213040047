@@ -53,7 +53,7 @@ if( isset($_POST ["cari"]) ) {
                 lainnya
               </a>
               <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarDarkDropdownMenuLink">
-                <li><a class="dropdown-item" href="#">halaman admin</a></li>
+                <li><a class="dropdown-item" href="layout/login.php">halaman admin</a></li>
               </ul>
             </li>
           </ul>

@@ -70,6 +70,9 @@ if( isset($_POST ["cari"]) ) {
                 <p>Data penjualan</p>
               </a>
             </li>
+            <li class=" col-md-12">
+            <a href="cetak.php" type="button" class="btn btn-primary text-white">Cetak</a>
+            </li>
           </ul>
         </div>
       </div>

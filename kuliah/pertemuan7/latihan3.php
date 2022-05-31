@@ -26,3 +26,24 @@
 </form>
 </body>
 </html>
+
+
+<?php 
+
+echo "<hr>";
+
+$angka = 5;
+function cetak_bintang($angka){
+    for($a=$angka;$a>0;$a--){
+        for($b=$angka;$b>=$a;$b--){
+        echo "*";
+        }
+        echo "<br>";
+        }
+}
+
+
+
+	
+
+?>

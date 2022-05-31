@@ -30,24 +30,32 @@ if(isset($_POST["register"])){
             <div class="col-md-6 p-5 d-flex align-items-center regis" >
                 <h1 class="fw-bold text-white" style="font-size: 100px;"> Haloo !!</h1>
             </div>
-            <div class="col-md-6 p-5 regis-form">
-                <h2 class="fw-bold mt-5 text-regis">Registrasi Admin</h2>
-                <form class="mt-5" action="" method="post">
-                    <div class="mb-3 ">
-                        <label for="username" class="form-label">Username</label>
-                        <input type="text" class="form-control " id="username" name="username" placeholder="masukkan username" >
-                    </div>
-                    <div class="mb-3">
-                        <label for="password" class="form-label ">Password</label>
-                        <input type="password" class="form-control" id="password" name="password" placeholder="masukkan password">
-                    </div>
-                    <div class="mb-3">
-                        <label for="password2" class="form-label">Konfirmasi password</label>
-                        <input type="password" class="form-control" id="password2" name="password2" placeholder="masukkan konfirmasi password">
-                    </div>
-                    
-                    <button type="submit" class="btn btn-regis" name="register">Register</button>
-                </form>
+            <div class="col-md-6">
+                <div class="col-md-12 p-5 regis-form">
+                    <h2 class="fw-bold mt-5 text-regis">Registrasi Admin</h2>
+                    <form class="mt-5" action="" method="post">
+                        <div class="mb-3 ">
+                            <label for="username" class="form-label">Username</label>
+                            <input type="text" class="form-control rounded-pill" id="username" name="username" placeholder="masukkan username" required >
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label ">Password</label>
+                            <input type="password" class="form-control rounded-pill" id="password" name="password" placeholder="masukkan password" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password2" class="form-label">Konfirmasi password</label>
+                            <input type="password" class="form-control rounded-pill" id="password2" name="password2" placeholder="masukkan konfirmasi password" required>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-regis rounded-pill col-md-12 mt-3" name="register">Register</button>
+                        <div class="d-flex flex-row bd-highlight mb-3">
+                                <p class="p-2 bd-highlight">Sudah punya akun?</p> 
+                                <a href="login.php" class="pt-2 bd-highlight text-daftar fw-bold text-decoration-none">Login</a>
+                                <p class="m-2">|</p>
+                                <a href="../index.php" class="pt-2 bd-highlight text-daftar fw-bold text-decoration-none">kembali</a>
+                            </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
