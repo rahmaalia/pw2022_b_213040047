@@ -17,7 +17,22 @@ $produk = query($query);
 
 <section id="data" class="container text-center my-3 ">
         <div class="row mt-5 justify-content">
-          <h3 class="produk-text mb-4 fw-bold ">Produk Serendipity</h3>
+          <div class="  mb-4 ">
+            <div class="col ">
+              <h3 class="produk-text mb-4 fw-bold  d-inline float-start ">Produk Serendipity</h3>
+            </div>
+            <form action="" method="post">
+            <div class="input-group col-3 float-end">
+                <select class="form-select" id="inputGroupSelect04" name="kategori">
+                  <option value="0">Semua Kategori</option>
+                  <option value="1">Bacpack</option>
+                  <option value="3">Slingbag</option>
+                  <option value="2">Totebag</option>
+                </select>
+                <button class="btn btn-login" name="pilih" type="submit">Pilih</button>
+              </form>
+            </div>
+          </div>  
           <?php foreach ($produk as $pro) : ?>
             <div class="col-sm-5 col-md-3 zoom">
               <a href="detail.php?id=<?= $pro['id_produk'] ?>"">

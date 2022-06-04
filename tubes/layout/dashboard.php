@@ -6,8 +6,22 @@ if(!isset($_SESSION["login"])){
 }
 
 require 'functions.php';
-$produk = query("SELECT * FROM produk join kategori on kategori.id_kategori = produk.kategori_id ORDER BY id_produk DESC");
+// $produk = query("SELECT * FROM produk join kategori on kategori.id_kategori = produk.kategori_id ORDER BY id_produk DESC");
+$produk = mysqli_query($conn,"SELECT * FROM produk join kategori on kategori.id_kategori = produk.kategori_id ORDER BY id_produk DESC");
 
+// pagination
+$batas = 10;
+$halaman = isset($_GET['halaman'])?(int)$_GET['halaman'] : 1;
+$halaman_awal = ($halaman>1) ? ($halaman * $batas) - $batas : 0;	
+
+$previous = $halaman - 1;
+$next = $halaman + 1;
+
+$jumlah_data = mysqli_num_rows($produk);
+$total_halaman = ceil($jumlah_data / $batas);
+
+$data_produk = mysqli_query($conn,"SELECT * FROM produk join kategori on kategori.id_kategori = produk.kategori_id ORDER BY id_produk DESC limit $halaman_awal, $batas");
+// end pagination
 
 // mengambil data barang
 $data_barang = mysqli_query($conn,"SELECT * FROM produk");
@@ -252,8 +266,8 @@ if( isset($_POST ["rendah"]) ) {
                           <th>Keterangan</th>
                         </thead>
                         <tbody>
-                          <?php $i = 1; ?>
-                          <?php foreach($produk as $pro): ?>
+                          <?php $i = 1 + $halaman_awal; ?>
+                          <?php foreach($data_produk as $pro): ?>
                           <tr>
                           <td><?= $i; ?></td>
                           <td><img src="../gambar/<?= $pro["gambar"]; ?>" width="100" alt=""></td>
@@ -271,7 +285,24 @@ if( isset($_POST ["rendah"]) ) {
                           <?php endforeach; ?>
                         </tbody>
                       </table>
-                    <!-- end table -->
+                      <!-- end table -->
+                      <nav >
+                        <ul class="pagination justify-content-end">
+                          <li class="page-item">
+                            <a class="page-link" <?php if($halaman > 1){ echo "href='?halaman=$previous'"; } ?>>Previous</a>
+                          </li>
+                          <?php 
+                          for($x=1;$x<=$total_halaman;$x++){
+                            ?> 
+                            <li class="page-item"><a class="page-link" href="?halaman=<?php echo $x ?>"><?php echo $x; ?></a></li>
+                            <?php
+                          }
+                          ?>				
+                          <li class="page-item">
+                            <a  class="page-link" <?php if($halaman < $total_halaman) { echo "href='?halaman=$next'"; } ?>>Next</a>
+                          </li>
+                        </ul>
+                      </nav>
                   </div>
                 </div>
               </div>
