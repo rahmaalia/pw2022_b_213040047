@@ -73,7 +73,7 @@ if( isset($_POST ["rendah"]) ) {
               </a>
             </li>
             <li class=" col-md-12">
-            <a href="cetak.php" type="button" class="btn btn-primary text-white"> Cetak</a>
+            <a href="cetak.php" type="button" class="btn btn-primary text-white" target="_blank"> Cetak</a>
             </li>
           </ul>
         </div>
@@ -142,8 +142,8 @@ if( isset($_POST ["rendah"]) ) {
                           <Button class="dropdown-item" name="rendah" type="submit">Terendah</Button>
                         </div>
                       </div>
-                      </form>
-                      <a href="tambah.php" class="btn btn-success  float-sm-end">+ tambah data</a>
+                    </form>
+                    <a href="tambah.php" class="btn btn-success  float-sm-end">+ tambah data</a>
                   </div>
                   
                   </div>

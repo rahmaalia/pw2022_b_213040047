@@ -22,7 +22,7 @@ $produk = query("SELECT * FROM produk join kategori on kategori.id_kategori = pr
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet" />
     
     <!-- js bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,7 +33,7 @@ $produk = query("SELECT * FROM produk join kategori on kategori.id_kategori = pr
   <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: #B6A9EF;">
       <div class="container-fluid">
-        <a class="navbar-brand" href="index.php"><img src="gambar/bg-seren.png" alt="bg" width="175"></a>
+        <a class="navbar-brand ms-3" href="index.php"><img src="gambar/bg-seren.png" alt="bg" width="175"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -57,7 +57,7 @@ $produk = query("SELECT * FROM produk join kategori on kategori.id_kategori = pr
           <a class="icon text-decoration-none d-flex text-white " href="#" >
             <i class="fa fa-heart"></i>
           </a>
-          <a class="icon text-decoration-none d-flex text-white ms-3 " href="#" >
+          <a class="icon text-decoration-none d-flex text-white ms-3 me-3 " href="#" >
             <i class="fas fa-shopping-cart"></i>
           </a>
         </div>
@@ -127,19 +127,25 @@ $produk = query("SELECT * FROM produk join kategori on kategori.id_kategori = pr
         <div class="container-fluid">
             <div class="row">
                 <div class=" col-xs-12 col-md-6 pull-right">
+                  <a href="layout/produk.php?gendong">
                     <div class="well gendong tall" >
                         <img src="gambar/gendong-remove.png" alt="" style="width:300px; ">
                     </div>      
+                  </a>
                 </div>
                 <div class="col-xs-12 col-md-6">
+                  <a href="layout/produk.php?kategori=sling">
                     <div class="well sling tall">
                       <img src="gambar/sling-remove.png" alt="" style="width:320px;">
                     </div>
+                  </a>
                 </div>
                 <div class="col-xs-12 col-md-12 pull-right mt-4 mb-4" >
+                  <a href="layout/produk.php?kategori=tote">
                     <div class="well tote">
                       <img src="gambar/totebag-remove.png" alt="" style="width:320px;">
                     </div>
+                  </a>
                 </div>
             </div>
         </div>
@@ -183,6 +189,7 @@ $produk = query("SELECT * FROM produk join kategori on kategori.id_kategori = pr
 
     <script src="assets/js/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

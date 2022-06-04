@@ -8,6 +8,7 @@ if(!isset($_SESSION["login"])){
 require 'functions.php';
 $produk = query("SELECT * FROM produk join kategori on kategori.id_kategori = produk.kategori_id ORDER BY id_produk DESC");
 
+
 // mengambil data barang
 $data_barang = mysqli_query($conn,"SELECT * FROM produk");
 // menghitung data barang
@@ -20,10 +21,25 @@ $jumlahStok = query("SELECT SUM(stok) FROM produk;");
 $kategori = mysqli_query($conn,"SELECT * FROM kategori");
 $jumlah_kategori = mysqli_num_rows($kategori);
 
+// query filter harga
+$hTinggi = query("SELECT * FROM produk join kategori on kategori.id_kategori = produk.kategori_id ORDER BY harga DESC");
+
+$hRendah = query("SELECT * FROM produk join kategori on kategori.id_kategori = produk.kategori_id ORDER BY harga ASC");
+
 // jika tombol cari diklik
 if( isset($_POST ["cari"]) ) {
   $produk = cari($_POST["keyword"]);
 } 
+
+// jika dropdown tinggi diklik
+if( isset($_POST ["tinggi"]) ) {
+  $produk = $hTinggi;
+}
+
+// jika dropdown rendah diklik
+if( isset($_POST ["rendah"]) ) {
+  $produk = $hRendah;
+}
 
 ?>
 
@@ -71,7 +87,7 @@ if( isset($_POST ["cari"]) ) {
               </a>
             </li>
             <li class=" col-md-12">
-            <a href="cetak.php" type="button" class="btn btn-primary text-white">Cetak</a>
+            <a href="cetak.php" type="button" class="btn btn-primary text-white" target="_blank">Cetak</a>
             </li>
           </ul>
         </div>
@@ -205,8 +221,21 @@ if( isset($_POST ["cari"]) ) {
           </div>
           <div class="col-md-12">
             <div class="card">
-              <div class="card-header">
-                <h4 class="card-title">Data Barang</h4>
+              <div class="card-header m-3">
+                <div class="row justify-content-between ">
+                  <h4 class="card-title">Data Barang</h4>
+                  <form action="" method="post">
+                        <div class="dropdown">
+                          <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+                            Filter Harga
+                          </button>
+                          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <Button class="dropdown-item" name="tinggi" type="submit" >Tertinggi</Button>
+                            <Button class="dropdown-item" name="rendah" type="submit">Terendah</Button>
+                          </div>
+                        </div>
+                    </form>
+                </div>
               </div>
               <div class="card-body">
                 <div class="table">
