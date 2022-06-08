@@ -49,15 +49,15 @@ if (isset($_POST["submit"])) {
                     <form action="" method="post" enctype="multipart/form-data">
                         <div class="mb-3">
                             <label for="namaProduk" class="form-label">Nama Produk</label>
-                            <input type="text" class="form-control" id="namaProduk" name="namaProduk" placeholder="masukkan nama produk" required autofocus>
+                            <input type="text" class="form-control" id="namaProduk" name="namaProduk" placeholder="masukkan nama produk" required autofocus autocomplete="off">
                         </div>
                         <div class="mb-3">
                             <label for="stok" class="form-label">Stok</label>
-                            <input type="number" class="form-control" id="stok" name="stok" placeholder="masukkan jumlah stok" required >
+                            <input type="number" class="form-control" id="stok" name="stok" placeholder="masukkan jumlah stok" required autocomplete="off">
                         </div>
                         <div class="mb-3">
                             <label for="harga" class="form-label">Harga</label>
-                            <input type="number" class="form-control" id="harga" name="harga" placeholder="masukkan harga barang" required >
+                            <input type="number" class="form-control" id="harga" name="harga" placeholder="masukkan harga barang" required autocomplete="off">
                         </div>
                         <div class="mb-3">
                             <label for="gambar" class="form-label">Gambar</label>
@@ -66,8 +66,8 @@ if (isset($_POST["submit"])) {
                         </div>
                         <div class="mb-3">
                             <label for="kategori" class="col-form-label">Kategori</label>
-                            <select class="form-select" name="kategori" required="">
-                                <option disabled="" selected="">Pilih kategori</option>
+                            <select class="form-select" name="kategori" required>
+                                <option disabled="" selected="" value="">Pilih kategori</option>
                                 <option value="1">Backpack</option>
                                 <option value="2">Totebag</option>
                                 <option value="3">Slingbag</option>
@@ -75,7 +75,7 @@ if (isset($_POST["submit"])) {
                         </div>
                         <div class="mb-3">
                             <label for="keterangan" class="form-label">Keterangan</label>
-                            <textarea class="form-control" id="keterangan" name="keterangan" placeholder="masukkan keterangan barang" rows="3" required ></textarea>
+                            <textarea class="form-control" id="keterangan" name="keterangan" placeholder="masukkan keterangan barang" rows="3" required autocomplete="off"></textarea>
                         </div>
                         
                         <button type="submit" class="btn btn-primary" name="submit">Submit</button>

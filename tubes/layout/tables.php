@@ -143,7 +143,7 @@ if( isset($_POST ["rendah"]) ) {
                         </div>
                       </div>
                     </form>
-                    <a href="tambah.php" class="btn btn-success  float-sm-end">+ tambah data</a>
+                    <a href="tambah.php" class="btn btn-success  float-sm-end">+ tambah barang</a>
                   </div>
                   
                   </div>

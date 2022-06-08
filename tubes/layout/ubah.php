@@ -77,7 +77,7 @@ if (isset($_POST["submit"])) {
                         <div class="mb-3">
                             <label for="kategori" class="col-form-label">Kategori</label>
                             <select class="form-select" name="kategori_id" required >
-                                <option disabled="" selected="">Pilih kategori</option>
+                                <option disabled="" selected="" value="">Pilih kategori</option>
                                 <option value="1" <?php if($pro['kategori_id'] == "1") { echo "selected";} ?> >Backpack</option>
                                 <option value="2" <?php if($pro['kategori_id'] == "2") { echo "selected";} ?>>Totebag</option>
                                 <option value="3" <?php if($pro['kategori_id'] == "3") { echo "selected";} ?>>Slingbag</option>

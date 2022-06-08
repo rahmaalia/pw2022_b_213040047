@@ -37,7 +37,7 @@ if(isset($_POST["register"])){
                     <form class="mt-5" action="" method="post">
                         <div class="mb-3 ">
                             <label for="username" class="form-label">Username</label>
-                            <input type="text" class="form-control rounded-pill" id="username" name="username" placeholder="masukkan username" required >
+                            <input type="text" class="form-control rounded-pill" id="username" name="username" placeholder="masukkan username" required autocomplete="off">
                         </div>
                         <div class="mb-3">
                             <label for="password" class="form-label ">Password</label>

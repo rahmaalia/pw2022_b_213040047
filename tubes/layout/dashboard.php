@@ -151,83 +151,85 @@ if( isset($_POST ["rendah"]) ) {
         </nav>
         <!-- End Navbar -->
         <div class="content">
-          <div class="row">
-            <div class="col-lg-3 col-md-6 col-sm-6">
-              <div class="card card-stats">
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col-5 col-md-4">
-                      <div class="icon-big text-center icon-warning">
-                        <i class="nc-icon nc-bag-16 text-warning"></i>
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-5 col-md-4">
+                        <div class="icon-big text-center icon-warning">
+                          <i class="nc-icon nc-bag-16 text-warning"></i>
+                        </div>
                       </div>
-                    </div>
-                    <div class="col-7 col-md-8">
-                      <div class="numbers">
-                        <p class="card-category">Item</p>
-                        <p class="card-title"><?= $jumlah_barang; ?></p>
-                        <p></p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="card-footer">
-                  <hr />
-                  <div class="stats">
-                    *jumlah barang keseluruhan
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6">
-              <div class="card card-stats">
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col-5 col-md-4">
-                      <div class="icon-big text-center icon-warning">
-                        <i class="nc-icon nc-paper text-success"></i>
-                      </div>
-                    </div>
-                    <div class="col-7 col-md-8">
-                      <div class="numbers">
-                        <p class="card-category">Stok seluruh</p>
-                        <?php foreach($jumlahStok as $js): ?>
-                        <p class="card-title"><?php echo $js['SUM(stok)'] ;?></p>
-                        <?php endforeach; ?>
-                        <p></p>
+                      <div class="col-7 col-md-8">
+                        <div class="numbers">
+                          <p class="card-category">Item</p>
+                          <p class="card-title"><?= $jumlah_barang; ?></p>
+                          <p></p>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-                <div class="card-footer">
-                  <hr />
-                  <div class="stats">
-                    *stok keseluruhan barang
+                  <div class="card-footer">
+                    <hr />
+                    <div class="stats">
+                      *jumlah seluruh barang
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6">
-              <div class="card card-stats">
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col-5 col-md-4">
-                      <div class="icon-big text-center icon-warning">
-                        <i class="nc-icon nc-bookmark-2 text-danger"></i>
+              <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-5 col-md-4">
+                        <div class="icon-big text-center icon-warning">
+                          <i class="nc-icon nc-paper text-success"></i>
+                        </div>
                       </div>
-                    </div>
-                    <div class="col-7 col-md-8">
-                      <div class="numbers">
-                        <p class="card-category">Kategori</p>
-                        <p class="card-title"><?= $jumlah_kategori; ?></p>
-                        <p></p>
+                      <div class="col-7 col-md-8">
+                        <div class="numbers">
+                          <p class="card-category">Stok seluruh</p>
+                          <?php foreach($jumlahStok as $js): ?>
+                          <p class="card-title"><?php echo $js['SUM(stok)'] ;?></p>
+                          <?php endforeach; ?>
+                          <p></p>
+                        </div>
                       </div>
                     </div>
                   </div>
+                  <div class="card-footer">
+                    <hr />
+                    <div class="stats">
+                      *stok keseluruhan barang
+                    </div>
+                  </div>
                 </div>
-                <div class="card-footer">
-                  <hr />
-                  <div class="stats">
-                    *Jumlah kategori
+              </div>
+              <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-5 col-md-4">
+                        <div class="icon-big text-center icon-warning">
+                          <i class="nc-icon nc-bookmark-2 text-danger"></i>
+                        </div>
+                      </div>
+                      <div class="col-7 col-md-8">
+                        <div class="numbers">
+                          <p class="card-category">Kategori</p>
+                          <p class="card-title"><?= $jumlah_kategori; ?></p>
+                          <p></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-footer">
+                    <hr />
+                    <div class="stats">
+                      *Jumlah kategori
+                    </div>
                   </div>
                 </div>
               </div>
@@ -286,7 +288,7 @@ if( isset($_POST ["rendah"]) ) {
                         </tbody>
                       </table>
                       <!-- end table -->
-                      <nav >
+                      <!-- <nav >
                         <ul class="pagination justify-content-end">
                           <li class="page-item">
                             <a class="page-link" <?php if($halaman > 1){ echo "href='?halaman=$previous'"; } ?>>Previous</a>
@@ -302,7 +304,7 @@ if( isset($_POST ["rendah"]) ) {
                             <a  class="page-link" <?php if($halaman < $total_halaman) { echo "href='?halaman=$next'"; } ?>>Next</a>
                           </li>
                         </ul>
-                      </nav>
+                      </nav> -->
                   </div>
                 </div>
               </div>

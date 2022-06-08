@@ -12,7 +12,7 @@ if(ISSET($_POST['pilih'] )){
   $category=$_POST['kategori'];
 
   if($_POST['kategori'] > 0){
-    $produk = query("SELECT * FROM produk join kategori on kategori.id_kategori = produk.kategori_id WHERE id_kategori = $category; ");
+    $produk = query("SELECT * FROM produk join kategori on kategori.id_kategori = produk.kategori_id WHERE id_kategori = $category AND stok >0; ");
   }else{
     $produk = query("SELECT * FROM produk join kategori on kategori.id_kategori = produk.kategori_id WHERE stok > 0 ORDER BY kategori_id ; ");
   }
