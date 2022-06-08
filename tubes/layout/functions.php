@@ -114,6 +114,12 @@ function ubah($data){
         $gambar = upload();
     }
 
+    // upload gambar
+    $gambar = upload();
+    if(!$gambar){
+        return false;
+    }
+
     // query insert data
     $query = "UPDATE produk SET 
                 nama_produk = '$namaProduk',

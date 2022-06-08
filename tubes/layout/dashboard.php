@@ -20,7 +20,7 @@ $next = $halaman + 1;
 $jumlah_data = mysqli_num_rows($produk);
 $total_halaman = ceil($jumlah_data / $batas);
 
-$data_produk = mysqli_query($conn,"SELECT * FROM produk join kategori on kategori.id_kategori = produk.kategori_id ORDER BY id_produk DESC limit $halaman_awal, $batas");
+$data_produk = mysqli_query($conn,"SELECT * FROM produk join kategori on kategori.id_kategori = produk.kategori_id ORDER BY id_produk DESC ");
 // end pagination
 
 // mengambil data barang
