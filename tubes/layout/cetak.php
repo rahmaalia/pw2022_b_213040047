@@ -1,84 +1,45 @@
+
 <?php
-
-require('fpdf/fpdf.php');
-
-class PDF extends FPDF
-{
-// Page header
-function Header()
-{
-    // Logo
-    $this->Image('logo.png',10,6,30);
-    // Arial bold 15
-    $this->SetFont('Arial','B',15);
-    // Move to the right
-    $this->Cell(80);
-    // Title
-    $this->Cell(30,10,'Title',1,0,'C');
-    // Line break
-    $this->Ln(20);
-}
-
-// Page footer
-function Footer()
-{
-    // Position at 1.5 cm from bottom
-    $this->SetY(-15);
-    // Arial italic 8
-    $this->SetFont('Arial','I',8);
-    // Page number
-    $this->Cell(0,10,'Page '.$this->PageNo().'/{nb}',0,0,'C');
-}
-}
-
 require 'functions.php';
-$produk = query("SELECT * FROM produk join kategori on kategori.id_kategori = produk.kategori_id ORDER BY id_produk DESC");
+require_once("dompdf/autoload.inc.php");
+use Dompdf\Dompdf;
+$dompdf = new Dompdf();
+$query = mysqli_query($conn,"SELECT * FROM produk join kategori on kategori.id_kategori = produk.kategori_id ORDER BY id_produk DESC");
+$html = '<center>
+        <h2>LAPORAN BARANG SERENDIPITY</h2> </br>
+        </center><br><br>';
+$html.= '<center><h3 style="margin-top:20px; margin-bottom:20px;">Jl. Diponegoro No.22, Citarum, Kec. Bandung Wetan, Kota Bandung, Jawa Barat </h3></center>';
+$html.= '<br/>';
+$html.= '<br/>';
+$html.= '<hr>';
 
-$pdf = new FPDF();
-$pdf->SetAutoPageBreak(true,15);
-$pdf->AliasNbPages();
-$pdf->AddPage();
-$pdf->SetFont('Arial','B',16);
-$pdf->Cell(0,20, "LAPORAN DATA PENJUALAN SERENDIPITY", '0', 1, 'C');
-
-# header
-$pdf->setFont('Arial','',12);
-$yi = 44;
-$ya = 44;
-$pdf->setFont('Arial','',9);
-$pdf->setFillColor(222,222,222);
-$pdf->setXY(43,$ya);
-$pdf->CELL(10,6,'NO',1,0,'C',1);
-// $pdf->CELL(35,6,'GAMBAR',1,0,'C',1);
-$pdf->CELL(70,6,'NAMA',1,0,'C',1);
-$pdf->CELL(15,6,'STOK',1,0,'C',1);
-$pdf->CELL(30,6,'HARGA',1,0,'C',1);
-// $pdf->CELL(75,6,'KETERANGAN',1,0,'C',1);
-
+$html .= '<table border="1" width="100%" style="margin-top:40px;border-collapse: collapse;border: 1px solid #ddd;">
+ <tr>
+ <th style="text-align:center;  padding: 10px; background-color: #f2f2f2; font-family: Arial, Helvetica, sans-serif;">No</th>
+ <th style=" padding: 10px; background-color: #f2f2f2; font-family: Arial, Helvetica, sans-serif;">Nama produk</th>
+ <th style=" padding: 10px; background-color: #f2f2f2; font-family: Arial, Helvetica, sans-serif;">Stok</th>
+ <th style=" padding: 10px; background-color: #f2f2f2; font-family: Arial, Helvetica, sans-serif;">Harga</th>
+ <th style=" padding: 10px; background-color: #f2f2f2; font-family: Arial, Helvetica, sans-serif;">Kategori</th>
+ </tr>';
 $no = 1;
-$row = 6;
-$ya = $yi + $row;
-foreach($produk as $pro){
-    $pdf->setXY(43,$ya);
-    $pdf->setFont('arial','',9);
-    $pdf->setFillColor(255,255,255);
-    $pdf->CELL(10,6,$no,1,0,'C',1);
-    // $pdf->CELL(35,6,$pro["gambar"],1,0,'C',1);
-    // $pdf->image('../gambar/' . $pro["gambar"],35,140,50,30);
-    $pdf->Cell(70,6,$pro["nama_produk"],1,0,'L',1);
-    $pdf->CELL(15,6,$pro["stok"],1,0,'C',1);
-    $pdf->CELL(30,6,ubahRupiah($pro["harga"]),1,0,'C',1);
-    // $pdf->MultiCell(75,6,$pro["keterangan"],1,0,'C',1);
-    $ya = $ya+$row;
-    $no++;
+while($row = mysqli_fetch_array($query))
+{
+ $html .= "<tr>
+ <td style='text-align:center; font-family: Arial, Helvetica, sans-serif;'>".$no."</td>
+ <td style='padding: 10px; font-family: Arial, Helvetica, sans-serif;'>".$row['nama_produk']."</td>
+ <td style='padding: 10px; font-family: Arial, Helvetica, sans-serif;'>".$row['stok']."</td>
+ <td style='padding: 10px; font-family: Arial, Helvetica, sans-serif;'>".$row['harga']."</td>
+ <td style='padding: 10px; font-family: Arial, Helvetica, sans-serif;'>".$row['nama_kategori']."</td>
+ </tr>";
+ $no++;
 }
-
-
-
-
-
-$pdf->Output();
-
+$html .= "</html>";
+$dompdf->loadHtml($html);
+// Setting ukuran dan orientasi kertas
+$dompdf->setPaper('A4', 'potrait');
+// Rendering dari HTML Ke PDF
+$dompdf->render();
+// Melakukan output file Pdf
+$dompdf->stream('laporan_serendipity.pdf');
 ?>
-
 
