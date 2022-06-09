@@ -111,14 +111,15 @@ function ubah($data){
     if($_FILES['gambar']['error'] === 4){
         $gambar = $gambarLama;
     } else{
+        // $gambar = upload();
+        // upload gambar
         $gambar = upload();
+        if(!$gambar){
+            return false;
+        }
     }
 
-    // upload gambar
-    $gambar = upload();
-    if(!$gambar){
-        return false;
-    }
+    
 
     // query insert data
     $query = "UPDATE produk SET 
