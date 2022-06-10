@@ -28,7 +28,7 @@ while($row = mysqli_fetch_array($query))
  <td style='text-align:center; font-family: Arial, Helvetica, sans-serif;'>".$no."</td>
  <td style='padding: 10px; font-family: Arial, Helvetica, sans-serif;'>".$row['nama_produk']."</td>
  <td style='padding: 10px; font-family: Arial, Helvetica, sans-serif;'>".$row['stok']."</td>
- <td style='padding: 10px; font-family: Arial, Helvetica, sans-serif;'>".$row['harga']."</td>
+ <td style='padding: 10px; font-family: Arial, Helvetica, sans-serif;'>".ubahRupiah($row['harga'])."</td>
  <td style='padding: 10px; font-family: Arial, Helvetica, sans-serif;'>".$row['nama_kategori']."</td>
  </tr>";
  $no++;
