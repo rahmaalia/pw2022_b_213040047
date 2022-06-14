@@ -41,11 +41,11 @@ if(isset($_POST["register"])){
                         </div>
                         <div class="mb-3">
                             <label for="password" class="form-label ">Password</label>
-                            <input type="password" class="form-control rounded-pill" id="password" name="password" placeholder="masukkan password" required>
+                            <input type="password" class="form-control rounded-pill" id="password" name="password" placeholder="masukkan password" minlength="3"  required>
                         </div>
                         <div class="mb-3">
                             <label for="password2" class="form-label">Konfirmasi password</label>
-                            <input type="password" class="form-control rounded-pill" id="password2" name="password2" placeholder="masukkan konfirmasi password" required>
+                            <input type="password" class="form-control rounded-pill" id="password2" name="password2" placeholder="masukkan konfirmasi password" minlength="3"  required>
                         </div>
                         
                         <button type="submit" class="btn btn-regis rounded-pill col-md-12 mt-3" name="register">Register</button>

@@ -88,10 +88,11 @@ if(ISSET($_POST['pilih'] )){
                 <h1 class=""><strong> untuk dirimu</strong></h1>
             </div>
             <div class="col-md-4 p-0 mt-4" >
-                <form action="" method="POST"  >
+                <form action="" method="post"  >
                     <div class="input-group  ">
                         <span class="input-group-text bg-white" id="addon-wrapping"><i class="fa fa-search"></i></span>
                         <input type="text" class="form-control" placeholder="cari.." name="keyword" autocomplete="off" id="keyword" >
+                        <button type="submit" class="btn btn-primary" name="cari">Cari</button>
                     </div>
                 </form>
             </div>
@@ -179,7 +180,7 @@ if(ISSET($_POST['pilih'] )){
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="../assets/js/script.js"></script>
-    <script>
+    <!-- <script>
       // LIVE SEARCH
       // ambil elemen yang dibutuhkan
       var keyword = document.getElementById('keyword');
@@ -202,6 +203,6 @@ if(ISSET($_POST['pilih'] )){
         xhr.open('GET', '../ajax/search-produk.php?keyword=' + keyword.value, true);
         xhr.send();
       });
-    </script>
+    </script> -->
 </body>
 </html>
